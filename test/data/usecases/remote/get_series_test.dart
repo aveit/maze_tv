@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:maze_tv/data/api/api_client.dart';
 import 'package:maze_tv/data/errors/exceptions.dart';
 import 'package:maze_tv/data/models/tv_serie_model.dart';
 import 'package:maze_tv/data/usecases/remote/get_series.dart';
@@ -10,7 +9,7 @@ import 'package:maze_tv/domain/errors/failures.dart';
 import 'package:maze_tv/domain/usecases/get_series.dart';
 import 'package:mocktail/mocktail.dart';
 
-class ApiClientMock extends Mock implements ApiClient {}
+import '../../../mocks/mocks.dart';
 
 void main() {
   late GetSeries sut;
