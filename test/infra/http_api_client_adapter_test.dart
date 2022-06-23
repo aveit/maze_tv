@@ -8,7 +8,7 @@ class ClientMock extends Mock implements Client {}
 void main() {
   late HttpAdapter sut;
   late ClientMock clientMock;
-  const url = 'http://mysite.com';
+  const url = 'mysite.com';
 
   setUp(() {
     clientMock = ClientMock();
@@ -19,9 +19,19 @@ void main() {
     registerFallbackValue(Uri.parse('anyurl'));
   });
 
-  When mockGetCall() =>
-      when(() => clientMock.get(any(), headers: any(named: 'headers')));
-  void mockGet(int statusCode, {String body = '{"any_key":"any_value"}'}) =>
+  When mockGetCall() => when(
+        () => clientMock.get(
+          any(),
+          headers: any(
+            named: 'headers',
+          ),
+        ),
+      );
+  void mockGet(
+    int statusCode, {
+    String body = '{"any_key":"any_value"}',
+    Map<String, dynamic>? queryParams,
+  }) =>
       mockGetCall().thenAnswer((_) async => Response(body, statusCode));
 
   group(
@@ -38,7 +48,7 @@ void main() {
         //! assert
         verify(
           () => clientMock.get(
-            Uri.parse(url + urlToGet),
+            Uri.https(url, urlToGet),
             headers: {
               'content-type': 'application/json; charset=utf-8',
               'accept': 'application/json',
@@ -59,7 +69,7 @@ void main() {
         //! assert
         verify(
           () => clientMock.get(
-            Uri.parse(url + urlToGet),
+            Uri.https(url, urlToGet),
             headers: {
               'content-type': 'application/json; charset=utf-8',
               'accept': 'application/json',
@@ -89,6 +99,24 @@ void main() {
           {'any_key': 'any_value'},
           {'any_key2': 'any_value2'},
         ]);
+      });
+
+      test('Should call correctly passing query params', () async {
+        const query = {'q': 'any'};
+        const urlToGet = 'shows';
+        mockGet(200, queryParams: query);
+
+        await sut.get(path: urlToGet, queryParams: query);
+
+        verify(
+          () => clientMock.get(
+            Uri.https(url, urlToGet, query),
+            headers: {
+              'content-type': 'application/json; charset=utf-8',
+              'accept': 'application/json',
+            },
+          ),
+        );
       });
     },
   );

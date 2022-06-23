@@ -23,9 +23,10 @@ class HttpAdapter implements ApiClient {
   Future<dynamic> get({
     required String path,
     Map<String, String>? headers,
+    Map<String, String>? queryParams,
   }) async {
     final response = await httpClient.get(
-      Uri.parse(basePath + path),
+      Uri.https(basePath, path, queryParams),
       headers: _defaultHeaders..addAll(headers ?? {}),
     );
     return _handleHttpResponse(response);
