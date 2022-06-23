@@ -16,8 +16,12 @@ class GetTVSeriesImpl implements GetSeries {
   Future<Either<Failure, List<TVSerie>>> call() async {
     try {
       final response = await apiClient.get(path: '/shows');
-      final series = (response as List<Map<String, dynamic>>)
-          .map((json) => TvSerieModel.fromJson(json).toEntity())
+      final series = (response as List)
+          .map(
+            (json) => TvSerieModel.fromJson(
+              json as Map<String, dynamic>,
+            ).toEntity(),
+          )
           .toList();
 
       return right(series);

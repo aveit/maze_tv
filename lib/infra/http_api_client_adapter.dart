@@ -40,7 +40,7 @@ class HttpAdapter implements ApiClient {
         return jsonDecode(response.body);
 
       default:
-        throw UnexpectedException();
+        throw const UnexpectedException();
     }
   }
 }
