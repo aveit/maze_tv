@@ -32,7 +32,7 @@ class TvSerieModel {
       name: json['name'] as String?,
       type: json['type'] as String?,
       language: json['language'] as String?,
-      genres: (json['genres'] as List<String>?)?.cast<String>(),
+      genres: (json['genres'] as List<dynamic>?)?.cast<String>(),
       status: json['status'] as String?,
       runtime: json['runtime'] as int?,
       averageRuntime: json['averageRuntime'] as int?,
@@ -124,7 +124,7 @@ class ScheduleModel {
   factory ScheduleModel.fromJson(Map<String, dynamic> json) {
     return ScheduleModel(
       time: json['time'] as String?,
-      days: (json['days'] as List<String>?)?.cast<String>() ?? const [],
+      days: (json['days'] as List<dynamic>?)?.cast<String>() ?? const [],
     );
   }
 
@@ -142,7 +142,7 @@ class ScheduleModel {
 class RatingModel {
   const RatingModel({this.average});
   factory RatingModel.fromJson(Map<String, dynamic> json) {
-    return RatingModel(average: json['average'] as double?);
+    return RatingModel(average: double.tryParse(json['average'].toString()));
   }
 
   final double? average;
