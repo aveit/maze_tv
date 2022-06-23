@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:http/http.dart';
-import 'package:maze_tv/data/usecases/get_series_impl.dart';
+import 'package:maze_tv/data/usecases/remote/get_series.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/infra/http_api_client_adapter.dart';
 import 'package:maze_tv/l10n/l10n.dart';
