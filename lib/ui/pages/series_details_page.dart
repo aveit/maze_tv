@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
+import 'package:maze_tv/ui/components/informative_text.dart';
 import 'package:maze_tv/ui/components/serie_poster.dart';
+import 'package:maze_tv/ui/components/serie_summary.dart';
 
 class SeriesDetailsPage extends StatefulWidget {
   const SeriesDetailsPage({super.key, required this.serie});
@@ -16,11 +18,9 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xfff3f3f3),
       extendBodyBehindAppBar: true,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
-        // controller: controller,
         slivers: [
           SliverAppBar(
             leading: IconButton(
@@ -29,7 +29,6 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
               },
               icon: const Icon(Icons.arrow_back_rounded),
             ),
-            backgroundColor: const Color(0xfff3f3f3),
             automaticallyImplyLeading: false,
             elevation: 0,
             stretch: true,
@@ -46,27 +45,47 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
                     serie: widget.serie,
                     betterQuality: true,
                   ),
-                  // Container(
-                  //   margin: const EdgeInsets.all(16),
-                  //   child: Positioned(
-                  //     child: Align(
-                  //       alignment: Alignment.bottomCenter,
-                  //       child: RatingBar(
-                  //         valueKey: widget.serie.id.toString(),
-                  //         rating: widget.serie.rating.average,
-                  //         size: 25,
-                  //       ),
-                  //     ),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
           ),
-          SliverToBoxAdapter(
-            child: SizedBox(
-              height: 50,
-              child: Stack(),
+          SliverPadding(
+            padding: const EdgeInsets.all(8),
+            sliver: SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  InformativeText(text: widget.serie.name),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      children: widget.serie.genres
+                          .map(
+                            (genre) => Padding(
+                              padding: const EdgeInsets.all(4),
+                              child: RawChip(
+                                backgroundColor: Colors.grey.shade300,
+                                padding: const EdgeInsets.all(8),
+                                label: Text(
+                                  genre,
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Theme.of(context)
+                                        .primaryColor
+                                        .withOpacity(.7),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: SerieSummary(serie: widget.serie),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

@@ -15,6 +15,7 @@ class InformativeText extends StatelessWidget {
       style: const TextStyle(
         fontSize: 32,
         fontWeight: FontWeight.w600,
+        color: Colors.black54,
       ),
     );
   }

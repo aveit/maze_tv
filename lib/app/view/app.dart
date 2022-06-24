@@ -53,7 +53,6 @@ class App extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: const AppBarTheme(color: kPrimaryColor),
-          scaffoldBackgroundColor: Colors.white,
           colorScheme: ColorScheme.fromSwatch(
             accentColor: kPrimaryColor,
             primaryColorDark: kPrimaryColor,
