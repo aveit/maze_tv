@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:maze_tv/constants.dart';
 import 'package:maze_tv/presentation/search/search_bloc.dart';
 import 'package:maze_tv/ui/components/app_loader.dart';
 import 'package:maze_tv/ui/components/generic_error.dart';
@@ -50,7 +51,7 @@ class _SearchPageState extends State<SearchPage> {
                   );
             },
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: kBigSpace),
           BlocBuilder<SearchBloc, SearchState>(
             builder: (context, state) {
               return state.when(

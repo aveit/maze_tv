@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maze_tv/constants.dart';
 
 class SerieGenre extends StatelessWidget {
   const SerieGenre(
@@ -11,7 +12,7 @@ class SerieGenre extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(4),
+      padding: const EdgeInsets.all(kNanoPadding),
       child: RawChip(
         backgroundColor: Colors.grey.shade300,
         padding: const EdgeInsets.all(8),

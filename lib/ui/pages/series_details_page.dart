@@ -3,6 +3,7 @@ import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
 import 'package:maze_tv/ui/components/informative_text.dart';
 import 'package:maze_tv/ui/components/serie_genre.dart';
 import 'package:maze_tv/ui/components/serie_poster.dart';
+import 'package:maze_tv/ui/components/serie_schedule.dart';
 import 'package:maze_tv/ui/components/serie_summary.dart';
 
 class SeriesDetailsPage extends StatefulWidget {
@@ -63,10 +64,8 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
                           widget.serie.genres.map(SerieGenre.new).toList(),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(4),
-                    child: SerieSummary(serie: widget.serie),
-                  ),
+                  SerieSummary(serie: widget.serie),
+                  SerieSchedule(widget.serie.schedule),
                 ],
               ),
             ),
