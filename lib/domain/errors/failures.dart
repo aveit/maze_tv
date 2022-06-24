@@ -9,3 +9,7 @@ class UnexpectedFailure extends Failure {
 class ServerFailure extends Failure {
   const ServerFailure();
 }
+
+class InvalidParamFailure extends Failure {
+  const InvalidParamFailure();
+}
