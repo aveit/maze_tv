@@ -1,4 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:maze_tv/domain/entities/image.dart';
+import 'package:maze_tv/domain/entities/links.dart';
+import 'package:maze_tv/domain/entities/network.dart';
 
 class TVSerie extends Equatable {
   const TVSerie({
@@ -42,7 +45,7 @@ class TVSerie extends Equatable {
   final int weight;
   final Network network;
   final Externals externals;
-  final Image image;
+  final TVImage image;
   final String summary;
   final int updated;
   final Links links;
@@ -117,51 +120,6 @@ class Rating extends Equatable {
   List<Object?> get props => [average];
 }
 
-class Network extends Equatable {
-  const Network({
-    required this.id,
-    required this.name,
-    required this.country,
-    required this.officialSite,
-  });
-
-  factory Network.empty() {
-    return Network(
-      id: 0,
-      name: '',
-      country: Country.empty(),
-      officialSite: '',
-    );
-  }
-
-  final int id;
-  final String name;
-  final Country country;
-  final String officialSite;
-
-  @override
-  List<Object?> get props => [id, name, country, officialSite];
-}
-
-class Country extends Equatable {
-  const Country({
-    required this.name,
-    required this.code,
-    required this.timezone,
-  });
-
-  factory Country.empty() {
-    return const Country(name: '', code: '', timezone: '');
-  }
-
-  final String name;
-  final String code;
-  final String timezone;
-
-  @override
-  List<Object?> get props => [name, code, timezone];
-}
-
 class Externals extends Equatable {
   const Externals({
     required this.tvrage,
@@ -179,51 +137,4 @@ class Externals extends Equatable {
 
   @override
   List<Object?> get props => [tvrage, thetvdb, imdb];
-}
-
-class Image extends Equatable {
-  const Image({required this.medium, required this.original});
-
-  factory Image.empty() {
-    return const Image(
-      medium: '',
-      original: '',
-    );
-  }
-
-  final String medium;
-  final String original;
-
-  @override
-  List<Object?> get props => [medium, original];
-}
-
-class Links extends Equatable {
-  const Links({required this.self, required this.previousepisode});
-
-  factory Links.empty() {
-    return Links(
-      self: Self.empty(),
-      previousepisode: Self.empty(),
-    );
-  }
-
-  final Self self;
-  final Self previousepisode;
-
-  @override
-  List<Object?> get props => [self, previousepisode];
-}
-
-class Self extends Equatable {
-  const Self({required this.href});
-
-  factory Self.empty() {
-    return const Self(href: '');
-  }
-
-  final String href;
-
-  @override
-  List<Object?> get props => [href];
 }

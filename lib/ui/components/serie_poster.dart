@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
+import 'package:maze_tv/domain/entities/tv_serie.dart' hide TVImage;
 import 'package:maze_tv/ui/pages/series_details_page.dart';
 
 class SeriePoster extends StatelessWidget {

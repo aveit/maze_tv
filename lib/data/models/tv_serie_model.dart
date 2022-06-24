@@ -1,3 +1,9 @@
+import 'package:maze_tv/data/models/image_model.dart';
+import 'package:maze_tv/data/models/network_model.dart';
+import 'package:maze_tv/domain/entities/country.dart';
+import 'package:maze_tv/domain/entities/image.dart';
+import 'package:maze_tv/domain/entities/links.dart';
+import 'package:maze_tv/domain/entities/network.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 
 class TvSerieModel {
@@ -53,7 +59,7 @@ class TvSerieModel {
           ? ExternalsModel.fromJson(json['externals'] as Map<String, dynamic>)
           : null,
       image: json['image'] != null
-          ? ImageModel.fromJson(json['image'] as Map<String, dynamic>)
+          ? TVImageModel.fromJson(json['image'] as Map<String, dynamic>)
           : null,
       summary: json['summary'] as String?,
       updated: json['updated'] as int?,
@@ -80,7 +86,7 @@ class TvSerieModel {
   final int? weight;
   final NetworkModel? network;
   final ExternalsModel? externals;
-  final ImageModel? image;
+  final TVImageModel? image;
   final String? summary;
   final int? updated;
   final LinksModel? lLinks;
@@ -111,7 +117,7 @@ class TvSerieModel {
       weight: weight ?? 0,
       network: network?.toEntity() ?? Network.empty(),
       externals: externals?.toEntity() ?? Externals.empty(),
-      image: image?.toEntity() ?? Image.empty(),
+      image: image?.toEntity() ?? TVImage.empty(),
       summary: summary ?? '',
       updated: updated ?? 0,
       links: lLinks?.toEntity() ?? Links.empty(),
@@ -152,62 +158,6 @@ class RatingModel {
   }
 }
 
-class NetworkModel {
-  const NetworkModel({this.id, this.name, this.country, this.officialSite});
-  factory NetworkModel.fromJson(Map<String, dynamic> json) {
-    return NetworkModel(
-      id: json['id'] as int?,
-      name: json['name'] as String?,
-      country: json['country'] != null
-          ? CountryModel.fromJson(json['country'] as Map<String, dynamic>)
-          : null,
-      officialSite: json['officialSite'] as String?,
-    );
-  }
-
-  final int? id;
-  final String? name;
-  final CountryModel? country;
-  final String? officialSite;
-
-  Network toEntity() {
-    return Network(
-      id: id ?? 0,
-      name: name ?? '',
-      country: country?.toEntity() ??
-          const Country(
-            code: '',
-            name: '',
-            timezone: '',
-          ),
-      officialSite: officialSite ?? '',
-    );
-  }
-}
-
-class CountryModel {
-  const CountryModel({this.name, this.code, this.timezone});
-  factory CountryModel.fromJson(Map<String, dynamic> json) {
-    return CountryModel(
-      name: json['name'] as String?,
-      code: json['code'] as String?,
-      timezone: json['timezone'] as String?,
-    );
-  }
-
-  final String? name;
-  final String? code;
-  final String? timezone;
-
-  Country toEntity() {
-    return Country(
-      name: name ?? '',
-      code: code ?? '',
-      timezone: timezone ?? '',
-    );
-  }
-}
-
 class ExternalsModel {
   const ExternalsModel({this.tvrage, this.thetvdb, this.imdb});
   factory ExternalsModel.fromJson(Map<String, dynamic> json) {
@@ -227,26 +177,6 @@ class ExternalsModel {
       tvrage: tvrage ?? 0,
       thetvdb: thetvdb ?? 0,
       imdb: imdb ?? '',
-    );
-  }
-}
-
-class ImageModel {
-  const ImageModel({this.medium, this.original});
-  factory ImageModel.fromJson(Map<String, dynamic> json) {
-    return ImageModel(
-      medium: json['medium'] as String?,
-      original: json['original'] as String?,
-    );
-  }
-
-  final String? medium;
-  final String? original;
-
-  Image toEntity() {
-    return Image(
-      medium: medium ?? '',
-      original: original ?? '',
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
+import 'package:maze_tv/domain/entities/tv_serie.dart' hide TVImage;
 import 'package:maze_tv/ui/components/informative_text.dart';
 import 'package:maze_tv/ui/components/serie_genre.dart';
 import 'package:maze_tv/ui/components/serie_poster.dart';
@@ -66,6 +66,7 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
                   ),
                   SerieSummary(serie: widget.serie),
                   SerieSchedule(widget.serie.schedule),
+                  // SerieSeasons(widget.serie.),
                 ],
               ),
             ),
@@ -73,5 +74,14 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
         ],
       ),
     );
+  }
+}
+
+class SerieSeasons extends StatelessWidget {
+  const SerieSeasons({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox.shrink();
   }
 }
