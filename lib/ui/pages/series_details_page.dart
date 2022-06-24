@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
 import 'package:maze_tv/ui/components/rating.dart';
+import 'package:maze_tv/ui/components/serie_poster.dart';
 
 class SeriesDetailsPage extends StatefulWidget {
   static const routeName = 'SeriesDetailsPage';
@@ -29,9 +30,9 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              icon: Icon(Icons.arrow_back_rounded),
+              icon: const Icon(Icons.arrow_back_rounded),
             ),
-            backgroundColor: Color(0xfff3f3f3),
+            backgroundColor: const Color(0xfff3f3f3),
             automaticallyImplyLeading: false,
             elevation: 0,
             stretch: true,
@@ -44,26 +45,23 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  Hero(
-                    tag: ValueKey(widget.serie),
-                    child: Image.network(
-                      widget.serie.image.original,
-                      fit: BoxFit.cover,
-                    ),
+                  SerieImage(
+                    serie: widget.serie,
+                    betterQuality: true,
                   ),
-                  Container(
-                    margin: const EdgeInsets.all(16),
-                    child: Positioned(
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: RatingBar(
-                          valueKey: widget.serie.id.toString(),
-                          rating: widget.serie.rating.average,
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Container(
+                  //   margin: const EdgeInsets.all(16),
+                  //   child: Positioned(
+                  //     child: Align(
+                  //       alignment: Alignment.bottomCenter,
+                  //       child: RatingBar(
+                  //         valueKey: widget.serie.id.toString(),
+                  //         rating: widget.serie.rating.average,
+                  //         size: 25,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

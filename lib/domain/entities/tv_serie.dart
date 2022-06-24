@@ -47,6 +47,19 @@ class TVSerie extends Equatable {
   final int updated;
   final Links links;
 
+  bool get containsImage {
+    return image.medium.isNotEmpty || image.original.isNotEmpty;
+  }
+
+  String? get imageUrl {
+    if (containsImage) {
+      if (image.medium.isNotEmpty) {
+        return image.medium;
+      }
+      return image.original;
+    }
+  }
+
   @override
   List<Object?> get props => [
         id,

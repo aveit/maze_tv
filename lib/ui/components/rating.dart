@@ -43,44 +43,35 @@ class RatingBar extends StatelessWidget {
   }
 
   static RectTween _createRectTween(Rect? begin, Rect? end, int index) {
+    late Cubic curve;
     switch (index) {
       case 0:
       case 1:
-        return CustomRectTween(
-          begin: begin,
-          end: end,
-          cubic: Curves.easeOutExpo,
-        );
+        curve = Curves.easeOutExpo;
+        break;
       case 2:
       case 3:
-        return CustomRectTween(
-          begin: begin,
-          end: end,
-          cubic: Curves.easeOutQuint,
-        );
+        curve = Curves.easeOutQuint;
+        break;
       case 4:
       case 5:
-        return CustomRectTween(
-          begin: begin,
-          end: end,
-          cubic: Curves.easeOutQuart,
-        );
+        curve = Curves.easeOutQuart;
+        break;
       case 6:
       case 7:
-        return CustomRectTween(
-          begin: begin,
-          end: end,
-          cubic: Curves.easeOutCubic,
-        );
+        curve = Curves.easeOutCubic;
+        break;
       case 8:
       case 9:
       default:
-        return CustomRectTween(
-          begin: begin,
-          end: end,
-          cubic: Curves.easeOutQuad,
-        );
+        curve = Curves.easeOutQuad;
+        break;
     }
+    return CustomRectTween(
+      begin: begin,
+      end: end,
+      cubic: curve,
+    );
   }
 }
 
@@ -97,13 +88,13 @@ class CustomRectTween extends RectTween {
 
   @override
   Rect lerp(double t) {
-    double height = (end?.top ?? 0) - (begin?.top ?? 0);
-    double width = (end?.left ?? 0) - (begin?.left ?? 0);
+    final height = (end?.top ?? 0) - (begin?.top ?? 0);
+    final width = (end?.left ?? 0) - (begin?.left ?? 0);
 
-    double transformedY = _cubic.transform(t);
+    final transformedY = _cubic.transform(t);
 
-    double animatedX = (begin?.left ?? 0) + (t * width);
-    double animatedY = (begin?.top ?? 0) + (transformedY * height);
+    final animatedX = (begin?.left ?? 0) + (t * width);
+    final animatedY = (begin?.top ?? 0) + (transformedY * height);
 
     return Rect.fromLTWH(animatedX, animatedY, 1, 1);
   }
