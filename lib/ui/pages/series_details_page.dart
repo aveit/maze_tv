@@ -3,7 +3,6 @@ import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
 import 'package:maze_tv/ui/components/serie_poster.dart';
 
 class SeriesDetailsPage extends StatefulWidget {
-
   const SeriesDetailsPage({super.key, required this.serie});
   static const routeName = 'SeriesDetailsPage';
 
@@ -67,9 +66,7 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
           SliverToBoxAdapter(
             child: SizedBox(
               height: 50,
-              child: Stack(
-                
-              ),
+              child: Stack(),
             ),
           ),
         ],
