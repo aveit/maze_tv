@@ -28,6 +28,54 @@ class TVSerie extends Equatable {
     required this.links,
   });
 
+  factory TVSerie.empty({
+    int? id,
+    String? url,
+    String? name,
+    String? type,
+    String? language,
+    List<String>? genres,
+    String? status,
+    int? runtime,
+    int? averageRuntime,
+    String? premiered,
+    String? ended,
+    String? officialSite,
+    Schedule? schedule,
+    Rating? rating,
+    int? weight,
+    Network? network,
+    Externals? externals,
+    TVImage? image,
+    String? summary,
+    int? updated,
+    Links? links,
+  }) {
+    return TVSerie(
+      id: id ?? 1,
+      url: url ?? '',
+      name: name ?? '',
+      type: type ?? '',
+      language: language ?? '',
+      genres: genres ?? const [''],
+      status: status ?? '',
+      runtime: runtime ?? 0,
+      averageRuntime: averageRuntime ?? 0,
+      premiered: premiered ?? '',
+      ended: ended ?? '',
+      officialSite: officialSite ?? '',
+      schedule: schedule ?? Schedule.empty(),
+      rating: rating ?? Rating.empty(),
+      weight: weight ?? 0,
+      network: network ?? Network.empty(),
+      externals: externals ?? Externals.empty(),
+      image: image ?? TVImage.empty(),
+      summary: summary ?? '',
+      updated: updated ?? 0,
+      links: links ?? Links.empty(),
+    );
+  }
+
   final int id;
   final String url;
   final String name;

@@ -1,6 +1,10 @@
 import 'package:maze_tv/data/models/image_model.dart';
 import 'package:maze_tv/data/models/network_model.dart';
 import 'package:maze_tv/data/models/tv_serie_model.dart';
+import 'package:maze_tv/domain/entities/image.dart';
+import 'package:maze_tv/domain/entities/links.dart';
+import 'package:maze_tv/domain/entities/network.dart';
+import 'package:maze_tv/domain/entities/serie_season.dart';
 
 class SerieSeasonModel {
   const SerieSeasonModel({
@@ -36,6 +40,22 @@ class SerieSeasonModel {
       links: json['_links'] != null
           ? LinksModel.fromJson(json['_links'] as Map<String, dynamic>)
           : null,
+    );
+  }
+
+  SerieSeason toEntity() {
+    return SerieSeason(
+      id: id ?? 0,
+      url: url ?? '',
+      number: number ?? 0,
+      name: name ?? '',
+      episodeOrder: episodeOrder ?? 0,
+      premiereDate: premiereDate ?? '',
+      endDate: endDate ?? '',
+      network: network?.toEntity() ?? Network.empty(),
+      image: image?.toEntity() ?? TVImage.empty(),
+      summary: summary ?? '',
+      links: links?.toEntity() ?? Links.empty(),
     );
   }
 
