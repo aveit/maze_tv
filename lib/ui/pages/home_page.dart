@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:maze_tv/app/view/app.dart';
 import 'package:maze_tv/ui/pages/search/search_page.dart';
 import 'package:maze_tv/ui/pages/series_page.dart';
 
@@ -38,7 +36,7 @@ class _HomePageState extends State<HomePage>
             Tab(
               height: 60,
               child: Column(
-                children: [
+                children: const [
                   Icon(
                     Icons.movie_rounded,
                     size: 40,
@@ -50,7 +48,7 @@ class _HomePageState extends State<HomePage>
             Tab(
               height: 60,
               child: Column(
-                children: [
+                children: const [
                   Icon(
                     Icons.search_rounded,
                     size: 40,

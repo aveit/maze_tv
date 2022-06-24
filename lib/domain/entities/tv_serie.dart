@@ -58,6 +58,7 @@ class TVSerie extends Equatable {
       }
       return image.original;
     }
+    return null;
   }
 
   @override

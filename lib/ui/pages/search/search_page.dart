@@ -6,7 +6,6 @@ import 'package:maze_tv/ui/components/generic_error.dart';
 import 'package:maze_tv/ui/components/informative_text.dart';
 import 'package:maze_tv/ui/components/nothing_found.dart';
 import 'package:maze_tv/ui/components/serie_poster.dart';
-import 'package:provider/provider.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

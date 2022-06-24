@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
-import 'package:maze_tv/ui/components/rating.dart';
 import 'package:maze_tv/ui/components/serie_poster.dart';
 
 class SeriesDetailsPage extends StatefulWidget {
+
+  const SeriesDetailsPage({super.key, required this.serie});
   static const routeName = 'SeriesDetailsPage';
 
   final TVSerie serie;
-
-  const SeriesDetailsPage({super.key, required this.serie});
 
   @override
   State<SeriesDetailsPage> createState() => _SeriesDetailsPageState();
@@ -19,7 +17,7 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xfff3f3f3),
+      backgroundColor: const Color(0xfff3f3f3),
       extendBodyBehindAppBar: true,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
@@ -67,10 +65,10 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
+            child: SizedBox(
               height: 50,
               child: Stack(
-                children: [],
+                
               ),
             ),
           ),

@@ -1,13 +1,12 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:maze_tv/data/errors/exceptions.dart';
 import 'package:maze_tv/data/models/tv_serie_model.dart';
 import 'package:maze_tv/data/usecases/remote/search_series_by_name.dart';
-import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/domain/errors/failures.dart';
 import 'package:maze_tv/domain/usecases/search_series_by_name.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:flutter_test/flutter_test.dart';
 
 import '../../../mocks/mocks.dart';
 

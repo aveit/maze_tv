@@ -19,7 +19,6 @@ import 'package:maze_tv/presentation/search/search_bloc.dart';
 import 'package:maze_tv/presentation/series/series_bloc.dart';
 import 'package:maze_tv/ui/pages/home_page.dart';
 import 'package:maze_tv/ui/pages/series_details_page.dart';
-import 'package:maze_tv/ui/pages/series_page.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -84,6 +83,7 @@ class App extends StatelessWidget {
               transitionDuration: const Duration(milliseconds: 500),
             );
           }
+          return null;
         },
         localizationsDelegates: const [
           AppLocalizations.delegate,

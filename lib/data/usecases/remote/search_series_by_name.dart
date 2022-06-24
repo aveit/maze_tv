@@ -1,9 +1,9 @@
+import 'package:dartz/dartz.dart';
 import 'package:maze_tv/data/api/api_client.dart';
 import 'package:maze_tv/data/errors/exceptions.dart';
 import 'package:maze_tv/data/models/tv_serie_model.dart';
-import 'package:maze_tv/domain/errors/failures.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
-import 'package:dartz/dartz.dart';
+import 'package:maze_tv/domain/errors/failures.dart';
 import 'package:maze_tv/domain/usecases/search_series_by_name.dart';
 
 class SearchSeriesByNameRemote implements SearchSeriesByName {

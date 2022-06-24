@@ -1,7 +1,7 @@
-import 'package:maze_tv/infra/http_api_client_adapter.dart';
-import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:http/http.dart';
+import 'package:maze_tv/infra/http_api_client_adapter.dart';
+import 'package:mocktail/mocktail.dart';
 
 class ClientMock extends Mock implements Client {}
 
