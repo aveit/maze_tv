@@ -1,6 +1,5 @@
 import 'package:maze_tv/data/models/image_model.dart';
 import 'package:maze_tv/data/models/network_model.dart';
-import 'package:maze_tv/domain/entities/country.dart';
 import 'package:maze_tv/domain/entities/image.dart';
 import 'package:maze_tv/domain/entities/links.dart';
 import 'package:maze_tv/domain/entities/network.dart';

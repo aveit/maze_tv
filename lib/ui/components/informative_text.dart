@@ -4,18 +4,21 @@ class InformativeText extends StatelessWidget {
   const InformativeText({
     super.key,
     required this.text,
+    this.color,
+    this.fontSize,
   });
 
   final String text;
+  final Color? color;
+  final double? fontSize;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-        fontSize: 32,
-        fontWeight: FontWeight.w600,
-        color: Colors.black54,
+      style: TextStyle(
+        fontSize: fontSize ?? 32,
+        color: color ?? Colors.black54,
       ),
     );
   }

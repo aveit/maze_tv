@@ -8,14 +8,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:maze_tv/constants.dart';
+import 'package:maze_tv/data/usecases/remote/get_serie_seasons.dart';
 import 'package:maze_tv/data/usecases/remote/get_series.dart';
 import 'package:maze_tv/data/usecases/remote/search_series_by_name.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/infra/http_api_client_adapter.dart';
 import 'package:maze_tv/l10n/l10n.dart';
 import 'package:maze_tv/presentation/search/search_bloc.dart';
+import 'package:maze_tv/presentation/serie_seasons/serie_seasons_bloc.dart';
 import 'package:maze_tv/presentation/series/series_bloc.dart';
 import 'package:maze_tv/ui/pages/home_page.dart';
 import 'package:maze_tv/ui/pages/series_details_page.dart';
@@ -48,10 +51,22 @@ class App extends StatelessWidget {
             ),
           ),
         ),
+
+        BlocProvider(
+          create: (_) => SerieSeasonsBloc(
+            getSeriesSeasons: GetSerieSeasonsRemote(
+              HttpAdapter(
+                basePath: 'api.tvmaze.com',
+                httpClient: Client(),
+              ),
+            ),
+          ),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          textTheme: GoogleFonts.openSansTextTheme(),
           appBarTheme: const AppBarTheme(color: kPrimaryColor),
           colorScheme: ColorScheme.fromSwatch(
             accentColor: kPrimaryColor,

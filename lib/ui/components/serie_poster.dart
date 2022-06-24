@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:maze_tv/constants.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart' hide TVImage;
 import 'package:maze_tv/ui/pages/series_details_page.dart';
 
@@ -6,9 +7,11 @@ class SeriePoster extends StatelessWidget {
   const SeriePoster({
     required this.serie,
     super.key,
+    this.shouldCheckRating = false,
   });
 
   final TVSerie serie;
+  final bool shouldCheckRating;
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +23,21 @@ class SeriePoster extends StatelessWidget {
         );
       },
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           ClipRRect(
             borderRadius: const BorderRadius.all(
               Radius.circular(16),
             ),
-            child: SerieImage(serie: serie),
+            child: SerieImage(
+              serie: serie,
+              shouldCheckRating: shouldCheckRating,
+            ),
           ),
           Padding(
-            padding: const EdgeInsets.all(16),
+            padding: const EdgeInsets.only(top: kSmallPadding),
             child: Text(serie.name),
           ),
-          // RatingBar(
-          //   valueKey: serie.id.toString(),
-          //   rating: serie.rating.average,
-          //   size: 25,
-          // ),
         ],
       ),
     );
@@ -47,10 +49,19 @@ class SerieImage extends StatelessWidget {
     super.key,
     required this.serie,
     this.betterQuality = false,
+    this.shouldCheckRating = false,
   });
 
   final TVSerie serie;
   final bool betterQuality;
+  final bool shouldCheckRating;
+
+  double get imageSize {
+    if (!shouldCheckRating || serie.rating.average < 7) {
+      return 200;
+    }
+    return 300;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,8 +72,9 @@ class SerieImage extends StatelessWidget {
               placeholder: 'assets/images/placeholder.png',
               image: betterQuality ? serie.image.original : serie.imageUrl!,
               fit: BoxFit.cover,
+              height: imageSize,
             )
-          : const AppImagePlaceHolder(),
+          : AppImagePlaceHolder(size: imageSize),
     );
   }
 }
@@ -70,7 +82,10 @@ class SerieImage extends StatelessWidget {
 class AppImagePlaceHolder extends StatelessWidget {
   const AppImagePlaceHolder({
     super.key,
+    this.size = 200,
   });
+
+  final double size;
 
   @override
   Widget build(BuildContext context) {

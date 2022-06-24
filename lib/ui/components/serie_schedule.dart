@@ -17,32 +17,32 @@ class SerieSchedule extends StatelessWidget {
     }
     return Padding(
       padding: const EdgeInsets.all(kNanoPadding),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              const Icon(
-                Icons.timer,
-                color: Colors.black38,
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: [
+            Icon(
+              Icons.timer,
+              color: Theme.of(context).primaryColor,
+            ),
+            const SizedBox(width: kNanoSpace),
+            Text(
+              schedule.time,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
               ),
-              const SizedBox(width: kNanoSpace),
-              Text(
-                schedule.time,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w400,
+            ),
+            const Text(' | '),
+            ...schedule.days.map((e) {
+              return Padding(
+                padding: const EdgeInsets.all(kNanoPadding),
+                child: Text(
+                  '$e | ',
                 ),
-              ),
-              const Text(' | '),
-              ...schedule.days.map((e) {
-                return Padding(
-                  padding: const EdgeInsets.all(kNanoPadding),
-                  child: Text('$e | '),
-                );
-              }).toList(),
-            ],
-          ),
-        ],
+              );
+            }).toList(),
+          ],
+        ),
       ),
     );
   }
