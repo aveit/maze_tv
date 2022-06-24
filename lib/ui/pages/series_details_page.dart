@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart' hide Image;
 import 'package:maze_tv/ui/components/informative_text.dart';
+import 'package:maze_tv/ui/components/serie_genre.dart';
 import 'package:maze_tv/ui/components/serie_poster.dart';
 import 'package:maze_tv/ui/components/serie_summary.dart';
 
@@ -58,26 +59,8 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(
-                      children: widget.serie.genres
-                          .map(
-                            (genre) => Padding(
-                              padding: const EdgeInsets.all(4),
-                              child: RawChip(
-                                backgroundColor: Colors.grey.shade300,
-                                padding: const EdgeInsets.all(8),
-                                label: Text(
-                                  genre,
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    color: Theme.of(context)
-                                        .primaryColor
-                                        .withOpacity(.7),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
+                      children:
+                          widget.serie.genres.map(SerieGenre.new).toList(),
                     ),
                   ),
                   Padding(
