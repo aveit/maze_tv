@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maze_tv/app/view/app.dart';
-import 'package:maze_tv/presentation/bloc/series_bloc.dart';
+import 'package:maze_tv/presentation/series/series_bloc.dart';
 import 'package:maze_tv/ui/components/rating.dart';
 import 'package:maze_tv/ui/pages/series_details_page.dart';
 

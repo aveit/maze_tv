@@ -13,7 +13,7 @@ import 'package:maze_tv/data/usecases/remote/get_series.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/infra/http_api_client_adapter.dart';
 import 'package:maze_tv/l10n/l10n.dart';
-import 'package:maze_tv/presentation/bloc/series_bloc.dart';
+import 'package:maze_tv/presentation/series/series_bloc.dart';
 import 'package:maze_tv/ui/pages/series_details_page.dart';
 import 'package:maze_tv/ui/pages/series_page.dart';
 
