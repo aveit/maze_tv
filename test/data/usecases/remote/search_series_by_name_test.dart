@@ -36,7 +36,7 @@ void main() {
         path: any(named: 'path'),
         queryParams: any(named: 'queryParams'),
       ),
-    ).thenAnswer((_) async => result ?? [{}]);
+    ).thenAnswer((_) async => result ?? [<String, dynamic>{}]);
   }
 
   test('Should call ApiClient with the correct values', () async {
@@ -63,12 +63,13 @@ void main() {
       final result = await sut(serieName: '');
 
       //! assert
-      expect(result, const Left(InvalidParamFailure()));
+      expect(result, const Left<Failure, dynamic>(InvalidParamFailure()));
     });
 
-    test(
-        'When http client throws ServerException, should return a left with a failure',
-        () async {
+    test('''
+        When http client throws ServerException, should 
+        return a left with a failure
+        ''', () async {
       //? arrange
       mockError();
 
@@ -76,12 +77,13 @@ void main() {
       final result = await sut.call(serieName: 'anyname');
 
       //! assert
-      expect(result, const Left(ServerFailure()));
+      expect(result, const Left<Failure, dynamic>(ServerFailure()));
     });
 
-    test(
-        'When http client throws any Exception, should return a left with UnexpectedFailure',
-        () async {
+    test('''
+        When http client throws any Exception, should 
+        return a left with UnexpectedFailure
+        ''', () async {
       //? arrange
       mockError(Exception());
 
@@ -89,7 +91,7 @@ void main() {
       final result = await sut.call(serieName: 'anyname');
 
       //! assert
-      expect(result, const Left(UnexpectedFailure()));
+      expect(result, const Left<Failure, dynamic>(UnexpectedFailure()));
     });
   });
 
@@ -215,9 +217,9 @@ void main() {
         //! assert
         final deepEq = const DeepCollectionEquality().equals;
         final expectedList = [
-          TvSerieModel.fromJson(response.first['show'] as Map<String, dynamic>)
+          TvSerieModel.fromJson(response.first['show']! as Map<String, dynamic>)
               .toEntity(),
-          TvSerieModel.fromJson(response.last['show'] as Map<String, dynamic>)
+          TvSerieModel.fromJson(response.last['show']! as Map<String, dynamic>)
               .toEntity(),
         ];
 

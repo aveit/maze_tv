@@ -50,12 +50,13 @@ void main() {
       final result = await sut.call(serie: serie);
 
       //! assert
-      expect(result, const Left(ServerFailure()));
+      expect(result, const Left<Failure, dynamic>(ServerFailure()));
     });
 
-    test(
-        'When http client throws any Exception, should return a left with UnexpectedFailure',
-        () async {
+    test('''
+        When http client throws any Exception, should 
+        return a left with UnexpectedFailure
+        ''', () async {
       //? arrange
       when(() => apiClientMock.get(path: any(named: 'path'))).thenThrow(
         Exception(),
@@ -65,7 +66,7 @@ void main() {
       final result = await sut.call(serie: serie);
 
       //! assert
-      expect(result, const Left(UnexpectedFailure()));
+      expect(result, const Left<Failure, dynamic>(UnexpectedFailure()));
     });
   });
   group('SUCCESS', () {

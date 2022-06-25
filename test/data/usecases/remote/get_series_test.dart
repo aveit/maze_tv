@@ -78,7 +78,7 @@ void main() {
       final result = await sut.call();
 
       //! assert
-      expect(result, const Left(ServerFailure()));
+      expect(result, const Left<Failure, dynamic>(ServerFailure()));
     });
   });
   group('SUCCESS', () {

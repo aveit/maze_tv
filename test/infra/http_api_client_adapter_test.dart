@@ -19,7 +19,7 @@ void main() {
     registerFallbackValue(Uri.parse('anyurl'));
   });
 
-  When mockGetCall() => when(
+  When<dynamic> mockGetCall() => when(
         () => clientMock.get(
           any(),
           headers: any(

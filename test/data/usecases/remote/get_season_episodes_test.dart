@@ -49,12 +49,13 @@ void main() {
       final result = await sut.call(season: season);
 
       //! assert
-      expect(result, const Left(ServerFailure()));
+      expect(result, const Left<Failure, dynamic>(ServerFailure()));
     });
 
-    test(
-        'When http client throws any Exception, should return a left with UnexpectedFailure',
-        () async {
+    test('''
+        When http client throws any Exception, should return a
+        left with UnexpectedFailure
+        ''', () async {
       //? arrange
       when(() => apiClientMock.get(path: any(named: 'path'))).thenThrow(
         Exception(),
@@ -64,7 +65,7 @@ void main() {
       final result = await sut.call(season: season);
 
       //! assert
-      expect(result, const Left(UnexpectedFailure()));
+      expect(result, const Left<Failure, dynamic>(UnexpectedFailure()));
     });
   });
   group('SUCCESS', () {
@@ -91,7 +92,7 @@ void main() {
                 'https://static.tvmaze.com/uploads/images/original_untouched/12/31233.jpg'
           },
           'summary':
-              '<p>Season 3 begins with Chester\'s Mill residents appearing inside and outside the Dome following an evacuation into the tunnels beneath the town. Meanwhile, the Dome begins to reveal its ultimate agenda; and surprising alliances form as new residents emerge.</p>',
+              "<p>Season 3 begins with Chester's Mill residents appearing inside and outside the Dome following an evacuation into the tunnels beneath the town. Meanwhile, the Dome begins to reveal its ultimate agenda; and surprising alliances form as new residents emerge.</p>",
           '_links': {
             'self': {'href': 'https://api.tvmaze.com/episodes/142270'}
           }
@@ -100,7 +101,7 @@ void main() {
           'id': 151048,
           'url':
               'https://www.tvmaze.com/episodes/151048/under-the-dome-3x02-but-im-not',
-          'name': 'But I\'m Not',
+          'name': "But I'm Not",
           'season': 3,
           'number': 2,
           'type': 'regular',
@@ -116,7 +117,7 @@ void main() {
                 'https://static.tvmaze.com/uploads/images/original_untouched/12/31234.jpg'
           },
           'summary':
-              '<p>Chester\'s Mill residents appear inside and outside the Dome following an exit into the tunnels beneath the town. Meanwhile, the Dome begins to reveal its ultimate agenda; and surprising alliances form as new residents emerge.</p>',
+              "<p>Chester's Mill residents appear inside and outside the Dome following an exit into the tunnels beneath the town. Meanwhile, the Dome begins to reveal its ultimate agenda; and surprising alliances form as new residents emerge.</p>",
           '_links': {
             'self': {'href': 'https://api.tvmaze.com/episodes/151048'}
           }
