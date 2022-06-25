@@ -13,9 +13,16 @@ class GetTVSeriesImpl implements GetSeries {
 
   final ApiClient apiClient;
   @override
-  Future<Either<Failure, List<TVSerie>>> call() async {
+  Future<Either<Failure, List<TVSerie>>> call({
+    int? page,
+  }) async {
     try {
-      final response = await apiClient.get(path: '/shows');
+      final response = await apiClient.get(
+        path: '/shows',
+        queryParams: {
+          'page': page?.toString() ?? '1',
+        },
+      );
       final series = (response as List)
           .map(
             (json) => TvSerieModel.fromJson(

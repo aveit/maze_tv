@@ -3,14 +3,10 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:maze_tv/data/errors/exceptions.dart';
 import 'package:maze_tv/data/models/episode_model.dart';
-import 'package:maze_tv/data/models/serie_season_model.dart';
 import 'package:maze_tv/data/usecases/remote/get_season_episodes.dart';
-import 'package:maze_tv/data/usecases/remote/get_serie_seasons.dart';
 import 'package:maze_tv/domain/entities/serie_season.dart';
-import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/domain/errors/failures.dart';
 import 'package:maze_tv/domain/usecases/get_season_episodes.dart';
-import 'package:maze_tv/domain/usecases/get_serie_seasons.dart';
 import 'package:mocktail/mocktail.dart';
 
 import '../../../mocks/mocks.dart';

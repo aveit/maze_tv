@@ -22,26 +22,55 @@ void main() {
     );
   });
 
-  test('Should call ApiClient with the correct values', () async {
-    //? arrange
-    when(
-      () => apiClientMock.get(path: any(named: 'path')),
-    ).thenAnswer((_) async => <TVSerie>[]);
-
-    //* act
-    await sut();
-
-    //! assert
-    verify(
-      () => apiClientMock.get(path: '/shows'),
+  When<dynamic> mockCall() {
+    return when(
+      () => apiClientMock.get(
+        path: any(named: 'path'),
+        queryParams: any(named: 'queryParams'),
+      ),
     );
-  });
+  }
+
+  group(
+    '[CORRECT VALUES]',
+    () {
+      test('When not passing a page, should call with page = 1', () async {
+        //? arrange
+        mockCall().thenAnswer((_) async => <TVSerie>[]);
+
+        //* act
+        await sut();
+
+        //! assert
+        verify(
+          () => apiClientMock.get(path: '/shows', queryParams: {'page': '1'}),
+        );
+      });
+      test('When passing a page number, should call with this number',
+          () async {
+        //? arrange
+        mockCall().thenAnswer((_) async => <TVSerie>[]);
+        const pgNumber = 10;
+
+        //* act
+        await sut(page: pgNumber);
+
+        //! assert
+        verify(
+          () => apiClientMock.get(
+            path: '/shows',
+            queryParams: {'page': '$pgNumber'},
+          ),
+        );
+      });
+    },
+  );
 
   group('FAILED', () {
     test('When http client throws, should return a left with a failure',
         () async {
       //? arrange
-      when(() => apiClientMock.get(path: any(named: 'path'))).thenThrow(
+      mockCall().thenThrow(
         const ServerException(),
       );
 
@@ -161,9 +190,8 @@ void main() {
           }
         }
       ];
-      when(() => apiClientMock.get(path: any(named: 'path'))).thenAnswer(
-        (_) async => response,
-      );
+
+      mockCall().thenAnswer((_) async => response);
 
       //* act
       final result = await sut();
