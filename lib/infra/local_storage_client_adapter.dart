@@ -10,10 +10,11 @@ class LocalStorageAdapter implements LocalStorageClient {
   final LocalStorage _storage;
 
   @override
-  Future<Map<String, dynamic>> get({required String key}) async {
+  Future<List<Map<String, dynamic>>> get({required String key}) async {
     try {
       final dataStored = await _storage.getItem(key);
-      return jsonDecode(dataStored as String) as Map<String, dynamic>;
+      final decodedList = jsonDecode(dataStored as String) as List<dynamic>;
+      return decodedList.cast<Map<String, dynamic>>();
     } catch (_) {
       throw const LocalException();
     }

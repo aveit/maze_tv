@@ -8,6 +8,15 @@ class CountryModel {
     this.code,
     this.timezone,
   });
+
+  factory CountryModel.fromEntity(Country entity) {
+    return CountryModel(
+      name: entity.name,
+      code: entity.code,
+      timezone: entity.timezone,
+    );
+  }
+
   factory CountryModel.fromJson(Map<String, dynamic> json) {
     return CountryModel(
       name: json['name'] as String?,

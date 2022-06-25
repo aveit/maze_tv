@@ -7,6 +7,14 @@ class TVImageModel {
     this.medium,
     this.original,
   });
+
+  factory TVImageModel.fromEntity(TVImage entity) {
+    return TVImageModel(
+      medium: entity.medium,
+      original: entity.original,
+    );
+  }
+
   factory TVImageModel.fromJson(Map<String, dynamic> json) {
     return TVImageModel(
       medium: json['medium'] as String?,

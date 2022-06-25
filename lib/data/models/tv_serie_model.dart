@@ -1,7 +1,6 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-
+import 'package:equatable/equatable.dart';
 import 'package:maze_tv/data/models/image_model.dart';
 import 'package:maze_tv/data/models/network_model.dart';
 import 'package:maze_tv/data/models/rating_model.dart';
@@ -11,7 +10,7 @@ import 'package:maze_tv/domain/entities/network.dart';
 import 'package:maze_tv/domain/entities/rating.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 
-class TvSerieModel {
+class TvSerieModel extends Equatable {
   const TvSerieModel({
     this.id,
     this.url,
@@ -35,6 +34,32 @@ class TvSerieModel {
     this.updated,
     this.lLinks,
   });
+
+  factory TvSerieModel.fromEntity(TVSerie entity) {
+    return TvSerieModel(
+      id: entity.id,
+      url: entity.url,
+      name: entity.name,
+      type: entity.type,
+      language: entity.language,
+      genres: entity.genres,
+      status: entity.status,
+      runtime: entity.runtime,
+      averageRuntime: entity.averageRuntime,
+      premiered: entity.premiered,
+      ended: entity.ended,
+      officialSite: entity.officialSite,
+      summary: entity.summary,
+      updated: entity.updated,
+      weight: entity.weight,
+      schedule: ScheduleModel.fromEntity(entity.schedule),
+      rating: RatingModel.fromEntity(entity.rating),
+      network: NetworkModel.fromEntity(entity.network),
+      externals: ExternalsModel.fromEntity(entity.externals),
+      image: TVImageModel.fromEntity(entity.image),
+      lLinks: LinksModel.fromEntity(entity.links),
+    );
+  }
 
   factory TvSerieModel.fromJson(Map<String, dynamic> json) {
     return TvSerieModel(
@@ -197,6 +222,9 @@ class TvSerieModel {
   }
 
   String toJson() => json.encode(toMap());
+
+  @override
+  List<Object?> get props => [id];
 }
 
 class ScheduleModel {
@@ -204,6 +232,14 @@ class ScheduleModel {
     this.time,
     required this.days,
   });
+
+  factory ScheduleModel.fromEntity(Schedule entity) {
+    return ScheduleModel(
+      days: entity.days,
+      time: entity.time,
+    );
+  }
+
   factory ScheduleModel.fromJson(Map<String, dynamic> json) {
     return ScheduleModel(
       time: json['time'] as String?,
@@ -241,6 +277,15 @@ class ExternalsModel {
     this.thetvdb,
     this.imdb,
   });
+
+  factory ExternalsModel.fromEntity(Externals entity) {
+    return ExternalsModel(
+      tvrage: entity.tvrage,
+      thetvdb: entity.thetvdb,
+      imdb: entity.imdb,
+    );
+  }
+
   factory ExternalsModel.fromJson(Map<String, dynamic> json) {
     return ExternalsModel(
       tvrage: json['tvrage'] as int?,
@@ -285,6 +330,13 @@ class LinksModel {
     this.self,
     this.previousepisode,
   });
+
+  factory LinksModel.fromEntity(Links entity) {
+    return LinksModel(
+      self: SelfModel.fromEntity(entity.self),
+      previousepisode: SelfModel.fromEntity(entity.previousepisode),
+    );
+  }
   factory LinksModel.fromJson(Map<String, dynamic> json) {
     return LinksModel(
       self: json['self'] != null
@@ -326,6 +378,11 @@ class SelfModel {
   const SelfModel({
     this.href,
   });
+
+  factory SelfModel.fromEntity(Self entity) {
+    return SelfModel(href: entity.href);
+  }
+
   factory SelfModel.fromJson(Map<String, dynamic> json) {
     return SelfModel(href: json['href'] as String?);
   }

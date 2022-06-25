@@ -6,6 +6,11 @@ class RatingModel {
   const RatingModel({
     this.average,
   });
+
+  factory RatingModel.fromEntity(Rating entity) {
+    return RatingModel(average: entity.average);
+  }
+
   factory RatingModel.fromJson(Map<String, dynamic> json) {
     return RatingModel(average: double.tryParse(json['average'].toString()));
   }

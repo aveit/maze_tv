@@ -12,6 +12,15 @@ class NetworkModel {
     this.officialSite,
   });
 
+  factory NetworkModel.fromEntity(Network entity) {
+    return NetworkModel(
+      id: entity.id,
+      name: entity.name,
+      country: CountryModel.fromEntity(entity.country),
+      officialSite: entity.officialSite,
+    );
+  }
+
   factory NetworkModel.fromJson(Map<String, dynamic> json) {
     return NetworkModel(
       id: json['id'] as int?,

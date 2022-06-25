@@ -17,7 +17,9 @@ void main() {
   });
 
   const myKey = 'favorites';
-  const expectedMap = {myKey: 'any_value'};
+  const expectedMap = [
+    {myKey: 'any_value'}
+  ];
   const serieToSave = TvSerieModel(id: 1);
 
   When<dynamic> mockDeleteCall() => when(() => storage.deleteItem(any()));
@@ -73,10 +75,10 @@ void main() {
     () {
       group('[SUCCESS]', () {
         test('''
-          Should call get on LocalStorege with correct values
+          Should call get on LocalStorage with correct values
           ''', () async {
           //? arrange
-          mockGet('data');
+          mockGet('[{"key":"data"},{"key2":"data2"}]');
 
           //* act
           await sut.get(key: myKey);
@@ -86,10 +88,10 @@ void main() {
         });
 
         test('''
-          Should return a Map<String, dynamic> when has data
+          Should return a List<Map<String, dynamic>> when has data
           ''', () async {
           //? arrange
-          mockGet("{\"$myKey\":\"any_value\"}");
+          mockGet("[{\"$myKey\":\"any_value\"}]");
 
           //* act
           final result = await sut.get(key: myKey);
