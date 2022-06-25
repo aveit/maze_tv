@@ -1,8 +1,10 @@
 import 'package:maze_tv/data/models/image_model.dart';
 import 'package:maze_tv/data/models/network_model.dart';
+import 'package:maze_tv/data/models/rating_model.dart';
 import 'package:maze_tv/domain/entities/image.dart';
 import 'package:maze_tv/domain/entities/links.dart';
 import 'package:maze_tv/domain/entities/network.dart';
+import 'package:maze_tv/domain/entities/rating.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 
 class TvSerieModel {
@@ -109,10 +111,7 @@ class TvSerieModel {
             days: [],
             time: '',
           ),
-      rating: rating?.toEntity() ??
-          const Rating(
-            average: 0,
-          ),
+      rating: rating?.toEntity() ?? Rating.empty(),
       weight: weight ?? 0,
       network: network?.toEntity() ?? Network.empty(),
       externals: externals?.toEntity() ?? Externals.empty(),
@@ -141,19 +140,6 @@ class ScheduleModel {
       days: days,
       time: time ?? '',
     );
-  }
-}
-
-class RatingModel {
-  const RatingModel({this.average});
-  factory RatingModel.fromJson(Map<String, dynamic> json) {
-    return RatingModel(average: double.tryParse(json['average'].toString()));
-  }
-
-  final double? average;
-
-  Rating toEntity() {
-    return Rating(average: average ?? 0);
   }
 }
 

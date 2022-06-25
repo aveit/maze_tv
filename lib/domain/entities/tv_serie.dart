@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:maze_tv/domain/entities/image.dart';
 import 'package:maze_tv/domain/entities/links.dart';
 import 'package:maze_tv/domain/entities/network.dart';
+import 'package:maze_tv/domain/entities/rating.dart';
 
 class TVSerie extends Equatable {
   const TVSerie({
@@ -153,19 +154,6 @@ class Schedule extends Equatable {
 
   @override
   List<Object?> get props => [time, days];
-}
-
-class Rating extends Equatable {
-  const Rating({required this.average});
-
-  factory Rating.empty() {
-    return const Rating(average: 0);
-  }
-
-  final double average;
-
-  @override
-  List<Object?> get props => [average];
 }
 
 class Externals extends Equatable {
