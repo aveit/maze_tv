@@ -10,7 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
+import 'package:localstorage/localstorage.dart';
 import 'package:maze_tv/constants.dart';
+import 'package:maze_tv/data/usecases/local/save_serie_on_favorites.dart';
 import 'package:maze_tv/data/usecases/remote/get_season_episodes.dart';
 import 'package:maze_tv/data/usecases/remote/get_serie_seasons.dart';
 import 'package:maze_tv/data/usecases/remote/get_series.dart';
@@ -18,8 +20,10 @@ import 'package:maze_tv/data/usecases/remote/search_series_by_name.dart';
 import 'package:maze_tv/domain/entities/episode.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/infra/http_api_client_adapter.dart';
+import 'package:maze_tv/infra/local_storage_client_adapter.dart';
 import 'package:maze_tv/l10n/l10n.dart';
 import 'package:maze_tv/main/composites/get_seasons_with_episodes.dart';
+import 'package:maze_tv/presentation/favorites/bloc/favorites_bloc.dart';
 import 'package:maze_tv/presentation/search/search_bloc.dart';
 import 'package:maze_tv/presentation/serie_seasons/serie_seasons_bloc.dart';
 import 'package:maze_tv/presentation/series/series_bloc.dart';
@@ -32,43 +36,36 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final apiClient = HttpAdapter(
+      basePath: 'api.tvmaze.com',
+      httpClient: Client(),
+    );
     return MultiBlocProvider(
       providers: [
         //todo(acacio) -> inject
         BlocProvider(
           create: (_) => SeriesBloc(
-            getSeries: GetTVSeriesImpl(
-              apiClient: HttpAdapter(
-                basePath: 'api.tvmaze.com',
-                httpClient: Client(),
-              ),
-            ),
+            getSeries: GetTVSeriesImpl(apiClient: apiClient),
           )..add(const SeriesEvent.loadNextPage()),
         ),
         BlocProvider(
           create: (_) => SearchBloc(
-            searchSeriesByName: SearchSeriesByNameRemote(
-              HttpAdapter(
-                basePath: 'api.tvmaze.com',
-                httpClient: Client(),
-              ),
-            ),
+            searchSeriesByName: SearchSeriesByNameRemote(apiClient),
           ),
         ),
         BlocProvider(
           create: (_) => SerieSeasonsBloc(
             getSeriesSeasons: GetSeasonsWithEpisodes(
-              getEpisodes: GetSeasonsEpisodesRemote(
-                HttpAdapter(
-                  basePath: 'api.tvmaze.com',
-                  httpClient: Client(),
-                ),
-              ),
-              getSeasons: GetSerieSeasonsRemote(
-                HttpAdapter(
-                  basePath: 'api.tvmaze.com',
-                  httpClient: Client(),
-                ),
+              getEpisodes: GetSeasonsEpisodesRemote(apiClient),
+              getSeasons: GetSerieSeasonsRemote(apiClient),
+            ),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => FavoritesBloc(
+            saveSerieOnFavorites: SaveSerieOnFavoritesLocal(
+              LocalStorageAdapter(
+                LocalStorage('db'),
               ),
             ),
           ),

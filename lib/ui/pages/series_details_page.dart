@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maze_tv/constants.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
+import 'package:maze_tv/presentation/favorites/bloc/favorites_bloc.dart';
 import 'package:maze_tv/presentation/serie_seasons/serie_seasons_bloc.dart';
 import 'package:maze_tv/ui/components/app_loader.dart';
 import 'package:maze_tv/ui/components/generic_error.dart';
@@ -63,7 +64,35 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
             sliver: SliverList(
               delegate: SliverChildListDelegate(
                 [
-                  InformativeText(text: widget.serie.name),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Flexible(
+                        flex: 10,
+                        child: InformativeText(
+                          text: widget.serie.name,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: kNanoPadding),
+                        child: Column(
+                          children: [
+                            IconButton(
+                              icon: Icon(
+                                Icons.favorite,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              onPressed: () {
+                                context.read<FavoritesBloc>().add(
+                                      FavoritesEvent.add(widget.serie),
+                                    );
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: Row(

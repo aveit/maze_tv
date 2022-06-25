@@ -168,8 +168,10 @@ abstract class _LoadNextPage extends SeriesEvent {
 
 /// @nodoc
 mixin _$SeriesState {
-  List<TVSerie> get series => throw _privateConstructorUsedError;
-  Failure? get error => throw _privateConstructorUsedError;
+  List<TVSerie> get series =>
+      throw _privateConstructorUsedError; // ignore: unused_element
+  Failure? get error =>
+      throw _privateConstructorUsedError; // ignore: unused_element
   bool? get isLoading => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -273,8 +275,10 @@ class _$_SeriesState implements _SeriesState {
     return EqualUnmodifiableListView(_series);
   }
 
+// ignore: unused_element
   @override
   final Failure? error;
+// ignore: unused_element
   @override
   final bool? isLoading;
 
@@ -314,9 +318,9 @@ abstract class _SeriesState implements SeriesState {
 
   @override
   List<TVSerie> get series => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: unused_element
   Failure? get error => throw _privateConstructorUsedError;
-  @override
+  @override // ignore: unused_element
   bool? get isLoading => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

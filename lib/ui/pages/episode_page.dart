@@ -59,7 +59,6 @@ class EpisodePage extends StatelessWidget {
                           text: '${episode.number} - ${episode.shortName}',
                         ),
                       ),
-                      // const SizedBox(width: kNanoSpace),
                       Padding(
                         padding: const EdgeInsets.only(right: kNanoPadding),
                         child: Column(
