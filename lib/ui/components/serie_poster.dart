@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maze_tv/constants.dart';
-import 'package:maze_tv/domain/entities/tv_serie.dart' hide TVImage;
+import 'package:maze_tv/domain/entities/image.dart';
+import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/ui/pages/series_details_page.dart';
 
 class SeriePoster extends StatelessWidget {
@@ -29,8 +30,8 @@ class SeriePoster extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(16),
             ),
-            child: SerieImage(
-              serie: serie,
+            child: ImageComponent(
+              image: serie.image,
               shouldCheckRating: shouldCheckRating,
             ),
           ),
@@ -44,20 +45,21 @@ class SeriePoster extends StatelessWidget {
   }
 }
 
-class SerieImage extends StatelessWidget {
-  const SerieImage({
+class ImageComponent extends StatelessWidget {
+  const ImageComponent({
     super.key,
-    required this.serie,
+    required this.image,
     this.betterQuality = false,
     this.shouldCheckRating = false,
   });
 
-  final TVSerie serie;
+  final TVImage image;
   final bool betterQuality;
   final bool shouldCheckRating;
 
   double get imageSize {
-    if (!shouldCheckRating || serie.rating.average < 7) {
+    //|| serie.rating.average < 7
+    if (!shouldCheckRating) {
       return 200;
     }
     return 300;
@@ -66,11 +68,11 @@ class SerieImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Hero(
-      tag: ValueKey(serie),
-      child: serie.containsImage
+      tag: ValueKey(image),
+      child: image.containsImage
           ? FadeInImage.assetNetwork(
-              placeholder: 'assets/images/placeholder.png',
-              image: betterQuality ? serie.image.original : serie.imageUrl!,
+              placeholder: kPlaceholderPath,
+              image: betterQuality ? image.original : image.medium,
               fit: BoxFit.cover,
               height: imageSize,
             )
@@ -90,7 +92,7 @@ class AppImagePlaceHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/images/placeholder.png',
+      kPlaceholderPath,
       fit: BoxFit.cover,
     );
   }

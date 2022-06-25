@@ -11,15 +11,19 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:maze_tv/constants.dart';
+import 'package:maze_tv/data/usecases/remote/get_season_episodes.dart';
 import 'package:maze_tv/data/usecases/remote/get_serie_seasons.dart';
 import 'package:maze_tv/data/usecases/remote/get_series.dart';
 import 'package:maze_tv/data/usecases/remote/search_series_by_name.dart';
+import 'package:maze_tv/domain/entities/episode.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/infra/http_api_client_adapter.dart';
 import 'package:maze_tv/l10n/l10n.dart';
+import 'package:maze_tv/main/composites/get_seasons_with_episodes.dart';
 import 'package:maze_tv/presentation/search/search_bloc.dart';
 import 'package:maze_tv/presentation/serie_seasons/serie_seasons_bloc.dart';
 import 'package:maze_tv/presentation/series/series_bloc.dart';
+import 'package:maze_tv/ui/pages/episode_page.dart';
 import 'package:maze_tv/ui/pages/home_page.dart';
 import 'package:maze_tv/ui/pages/series_details_page.dart';
 
@@ -51,13 +55,20 @@ class App extends StatelessWidget {
             ),
           ),
         ),
-
         BlocProvider(
           create: (_) => SerieSeasonsBloc(
-            getSeriesSeasons: GetSerieSeasonsRemote(
-              HttpAdapter(
-                basePath: 'api.tvmaze.com',
-                httpClient: Client(),
+            getSeriesSeasons: GetSeasonsWithEpisodes(
+              getEpisodes: GetSeasonsEpisodesRemote(
+                HttpAdapter(
+                  basePath: 'api.tvmaze.com',
+                  httpClient: Client(),
+                ),
+              ),
+              getSeasons: GetSerieSeasonsRemote(
+                HttpAdapter(
+                  basePath: 'api.tvmaze.com',
+                  httpClient: Client(),
+                ),
               ),
             ),
           ),
@@ -79,25 +90,30 @@ class App extends StatelessWidget {
           ),
         ),
         onGenerateRoute: (settings) {
+          late final Widget page;
           if (settings.name == SeriesDetailsPage.routeName) {
-            return PageRouteBuilder(
-              pageBuilder: (_, __, ___) {
-                return SeriesDetailsPage(
-                  serie: settings.arguments! as TVSerie,
-                );
-              },
-              transitionsBuilder: (_, animation, __, child) {
-                return Align(
-                  child: SizeTransition(
-                    sizeFactor: animation,
-                    child: child,
-                  ),
-                );
-              },
-              transitionDuration: const Duration(milliseconds: 500),
+            page = SeriesDetailsPage(
+              serie: settings.arguments! as TVSerie,
+            );
+          } else if (settings.name == EpisodePage.routeName) {
+            page = EpisodePage(
+              settings.arguments! as Episode,
             );
           }
-          return null;
+          return PageRouteBuilder(
+            pageBuilder: (_, __, ___) {
+              return page;
+            },
+            transitionsBuilder: (_, animation, __, child) {
+              return Align(
+                child: SizeTransition(
+                  sizeFactor: animation,
+                  child: child,
+                ),
+              );
+            },
+            transitionDuration: const Duration(milliseconds: 500),
+          );
         },
         localizationsDelegates: const [
           AppLocalizations.delegate,

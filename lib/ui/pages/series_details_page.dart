@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:maze_tv/constants.dart';
-import 'package:maze_tv/domain/entities/serie_season.dart';
 import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/presentation/serie_seasons/serie_seasons_bloc.dart';
 import 'package:maze_tv/ui/components/app_loader.dart';
-import 'package:maze_tv/ui/components/episode.dart';
 import 'package:maze_tv/ui/components/generic_error.dart';
 import 'package:maze_tv/ui/components/informative_text.dart';
 import 'package:maze_tv/ui/components/season_item.dart';
@@ -42,17 +40,18 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
             automaticallyImplyLeading: false,
             elevation: 0,
             stretch: true,
-            expandedHeight: 300,
+            pinned: true,
+            snap: true,
+            floating: true,
+            expandedHeight: 250,
+            centerTitle: true,
+            title: Text(widget.serie.name),
             flexibleSpace: FlexibleSpaceBar(
-              stretchModes: const [
-                StretchMode.blurBackground,
-                StretchMode.zoomBackground
-              ],
               background: Stack(
                 fit: StackFit.expand,
                 children: [
-                  SerieImage(
-                    serie: widget.serie,
+                  ImageComponent(
+                    image: widget.serie.image,
                     betterQuality: true,
                   ),
                 ],
@@ -72,7 +71,7 @@ class _SeriesDetailsPageState extends State<SeriesDetailsPage> {
                           widget.serie.genres.map(SerieGenre.new).toList(),
                     ),
                   ),
-                  SerieSummary(serie: widget.serie),
+                  Summary(summary: widget.serie.summary),
                   SerieSchedule(widget.serie.schedule),
                 ],
               ),

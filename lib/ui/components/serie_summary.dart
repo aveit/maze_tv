@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:maze_tv/constants.dart';
-import 'package:maze_tv/domain/entities/tv_serie.dart';
 import 'package:maze_tv/ui/components/informative_text.dart';
 import 'package:styled_text/styled_text.dart';
 
-class SerieSummary extends StatelessWidget {
-  const SerieSummary({super.key, required this.serie});
+class Summary extends StatelessWidget {
+  const Summary({super.key, required this.summary});
 
-  final TVSerie serie;
+  final String summary;
 
   @override
   Widget build(BuildContext context) {
-    if (serie.summary.isEmpty) {
-      return const InformativeText(text: 'There is no summary for this serie');
+    if (summary.isEmpty) {
+      return const InformativeText(text: 'There is no summary.');
     }
     return Padding(
       padding: const EdgeInsets.all(kNanoPadding),
       child: StyledText(
-        text: serie.summary,
+        text: summary,
         style: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w300,

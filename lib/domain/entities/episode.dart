@@ -36,6 +36,13 @@ class Episode extends Equatable {
   final String summary;
   final Links links;
 
+  String get shortName {
+    if (name.length >= 20) {
+      return '${name.substring(0, 20)}...';
+    }
+    return name;
+  }
+
   @override
   List<Object?> get props => [
         id,

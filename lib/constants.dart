@@ -11,3 +11,6 @@ const kBigPadding = 16.0;
 const kNanoSpace = 4.0;
 const kSmallSpace = 8.0;
 const kBigSpace = 16.0;
+
+/// Resources
+const kPlaceholderPath = 'assets/images/placeholder.png';

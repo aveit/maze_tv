@@ -16,6 +16,7 @@ class InformativeText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
+      overflow: TextOverflow.fade,
       style: TextStyle(
         fontSize: fontSize ?? 32,
         color: color ?? Colors.black54,

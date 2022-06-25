@@ -51,15 +51,13 @@ class SeasonItem extends StatelessWidget {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: [
-                            EpisodeWidget(season: season),
-                            EpisodeWidget(season: season),
-                            EpisodeWidget(season: season),
-                            EpisodeWidget(season: season),
-                            EpisodeWidget(season: season),
-                            EpisodeWidget(season: season),
-                            EpisodeWidget(season: season),
-                          ],
+                          children: season.episodes.map(
+                            (episode) {
+                              return EpisodeWidget(
+                                episode: episode,
+                              );
+                            },
+                          ).toList(),
                         ),
                       ),
                     ),
@@ -67,8 +65,11 @@ class SeasonItem extends StatelessWidget {
                       height: 200,
                       width: 150,
                       child: season.image.medium.isEmpty
-                          ? Image.asset('assets/images/placeholder.png')
-                          : Image.network(season.image.medium),
+                          ? Image.asset(kPlaceholderPath)
+                          : FadeInImage.assetNetwork(
+                              placeholder: kPlaceholderPath,
+                              image: season.image.medium,
+                            ),
                     ),
                   ],
                 ),

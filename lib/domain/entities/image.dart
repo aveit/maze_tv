@@ -13,6 +13,10 @@ class TVImage extends Equatable {
   final String medium;
   final String original;
 
+  bool get containsImage {
+    return medium.isNotEmpty || original.isNotEmpty;
+  }
+
   @override
   List<Object?> get props => [medium, original];
 }
