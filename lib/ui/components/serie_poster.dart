@@ -58,7 +58,6 @@ class ImageComponent extends StatelessWidget {
   final bool shouldCheckRating;
 
   double get imageSize {
-    //|| serie.rating.average < 7
     if (!shouldCheckRating) {
       return 200;
     }
@@ -72,6 +71,9 @@ class ImageComponent extends StatelessWidget {
       child: image.containsImage
           ? FadeInImage.assetNetwork(
               placeholder: kPlaceholderPath,
+              imageErrorBuilder: (_, __, ___) {
+                return const AppImagePlaceHolder();
+              },
               image: betterQuality ? image.original : image.medium,
               fit: BoxFit.cover,
               height: imageSize,

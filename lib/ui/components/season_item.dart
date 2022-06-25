@@ -13,6 +13,7 @@ class SeasonItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: kNanoPadding),
       child: ExpansionTile(
+        expandedAlignment: Alignment.centerLeft,
         title: Row(
           children: [
             InformativeText(
@@ -45,19 +46,22 @@ class SeasonItem extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Stack(
+                  alignment: Alignment.centerLeft,
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 150),
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
-                          children: season.episodes.map(
-                            (episode) {
-                              return EpisodeWidget(
-                                episode: episode,
-                              );
-                            },
-                          ).toList(),
+                          children: season.episodes.isEmpty
+                              ? [Text('no episodes found')]
+                              : season.episodes.map(
+                                  (episode) {
+                                    return EpisodeWidget(
+                                      episode: episode,
+                                    );
+                                  },
+                                ).toList(),
                         ),
                       ),
                     ),

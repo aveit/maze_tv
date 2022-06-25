@@ -28,6 +28,12 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: const Text(
+          'Tv Maze',
+          style: TextStyle(
+            fontSize: 22,
+          ),
+        ),
         bottom: TabBar(
           isScrollable: true,
           controller: controller,
@@ -37,10 +43,7 @@ class _HomePageState extends State<HomePage>
               height: 60,
               child: Column(
                 children: const [
-                  Icon(
-                    Icons.movie_rounded,
-                    size: 40,
-                  ),
+                  Icon(Icons.movie_rounded, size: 40),
                   Text('Movies'),
                 ],
               ),

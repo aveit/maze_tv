@@ -43,7 +43,7 @@ class App extends StatelessWidget {
                 httpClient: Client(),
               ),
             ),
-          )..add(const SeriesEvent.load()),
+          )..add(const SeriesEvent.loadNextPage()),
         ),
         BlocProvider(
           create: (_) => SearchBloc(

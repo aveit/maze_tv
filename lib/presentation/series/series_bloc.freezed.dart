@@ -18,33 +18,33 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SeriesEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function() loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function()? loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function()? loadNextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
+    required TResult Function(_LoadNextPage value) loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Load value)? load,
+    TResult Function(_LoadNextPage value)? loadNextPage,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
+    TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -67,35 +67,38 @@ class _$SeriesEventCopyWithImpl<$Res> implements $SeriesEventCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$$_LoadCopyWith<$Res> {
-  factory _$$_LoadCopyWith(_$_Load value, $Res Function(_$_Load) then) =
-      __$$_LoadCopyWithImpl<$Res>;
+abstract class _$$_LoadNextPageCopyWith<$Res> {
+  factory _$$_LoadNextPageCopyWith(
+          _$_LoadNextPage value, $Res Function(_$_LoadNextPage) then) =
+      __$$_LoadNextPageCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_LoadCopyWithImpl<$Res> extends _$SeriesEventCopyWithImpl<$Res>
-    implements _$$_LoadCopyWith<$Res> {
-  __$$_LoadCopyWithImpl(_$_Load _value, $Res Function(_$_Load) _then)
-      : super(_value, (v) => _then(v as _$_Load));
+class __$$_LoadNextPageCopyWithImpl<$Res>
+    extends _$SeriesEventCopyWithImpl<$Res>
+    implements _$$_LoadNextPageCopyWith<$Res> {
+  __$$_LoadNextPageCopyWithImpl(
+      _$_LoadNextPage _value, $Res Function(_$_LoadNextPage) _then)
+      : super(_value, (v) => _then(v as _$_LoadNextPage));
 
   @override
-  _$_Load get _value => super._value as _$_Load;
+  _$_LoadNextPage get _value => super._value as _$_LoadNextPage;
 }
 
 /// @nodoc
 
-class _$_Load extends _Load {
-  const _$_Load() : super._();
+class _$_LoadNextPage extends _LoadNextPage {
+  const _$_LoadNextPage() : super._();
 
   @override
   String toString() {
-    return 'SeriesEvent.load()';
+    return 'SeriesEvent.loadNextPage()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Load);
+        (other.runtimeType == runtimeType && other is _$_LoadNextPage);
   }
 
   @override
@@ -104,27 +107,27 @@ class _$_Load extends _Load {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() load,
+    required TResult Function() loadNextPage,
   }) {
-    return load();
+    return loadNextPage();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function()? loadNextPage,
   }) {
-    return load?.call();
+    return loadNextPage?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? load,
+    TResult Function()? loadNextPage,
     required TResult orElse(),
   }) {
-    if (load != null) {
-      return load();
+    if (loadNextPage != null) {
+      return loadNextPage();
     }
     return orElse();
   }
@@ -132,88 +135,45 @@ class _$_Load extends _Load {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Load value) load,
+    required TResult Function(_LoadNextPage value) loadNextPage,
   }) {
-    return load(this);
+    return loadNextPage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Load value)? load,
+    TResult Function(_LoadNextPage value)? loadNextPage,
   }) {
-    return load?.call(this);
+    return loadNextPage?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Load value)? load,
+    TResult Function(_LoadNextPage value)? loadNextPage,
     required TResult orElse(),
   }) {
-    if (load != null) {
-      return load(this);
+    if (loadNextPage != null) {
+      return loadNextPage(this);
     }
     return orElse();
   }
 }
 
-abstract class _Load extends SeriesEvent {
-  const factory _Load() = _$_Load;
-  const _Load._() : super._();
+abstract class _LoadNextPage extends SeriesEvent {
+  const factory _LoadNextPage() = _$_LoadNextPage;
+  const _LoadNextPage._() : super._();
 }
 
 /// @nodoc
 mixin _$SeriesState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TVSerie> series) loaded,
-    required TResult Function(Failure failure) failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) =>
+  List<TVSerie> get series => throw _privateConstructorUsedError;
+  Failure? get error => throw _privateConstructorUsedError;
+  bool? get isLoading => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $SeriesStateCopyWith<SeriesState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -222,6 +182,7 @@ abstract class $SeriesStateCopyWith<$Res> {
   factory $SeriesStateCopyWith(
           SeriesState value, $Res Function(SeriesState) then) =
       _$SeriesStateCopyWithImpl<$Res>;
+  $Res call({List<TVSerie> series, Failure? error, bool? isLoading});
 }
 
 /// @nodoc
@@ -231,275 +192,79 @@ class _$SeriesStateCopyWithImpl<$Res> implements $SeriesStateCopyWith<$Res> {
   final SeriesState _value;
   // ignore: unused_field
   final $Res Function(SeriesState) _then;
-}
-
-/// @nodoc
-abstract class _$$_InitialCopyWith<$Res> {
-  factory _$$_InitialCopyWith(
-          _$_Initial value, $Res Function(_$_Initial) then) =
-      __$$_InitialCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$SeriesStateCopyWithImpl<$Res>
-    implements _$$_InitialCopyWith<$Res> {
-  __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
-      : super(_value, (v) => _then(v as _$_Initial));
-
-  @override
-  _$_Initial get _value => super._value as _$_Initial;
-}
-
-/// @nodoc
-
-class _$_Initial extends _Initial {
-  const _$_Initial() : super._();
-
-  @override
-  String toString() {
-    return 'SeriesState.initial()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Initial);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TVSerie> series) loaded,
-    required TResult Function(Failure failure) failed,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial extends SeriesState {
-  const factory _Initial() = _$_Initial;
-  const _Initial._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_LoadingCopyWith<$Res> {
-  factory _$$_LoadingCopyWith(
-          _$_Loading value, $Res Function(_$_Loading) then) =
-      __$$_LoadingCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$_LoadingCopyWithImpl<$Res> extends _$SeriesStateCopyWithImpl<$Res>
-    implements _$$_LoadingCopyWith<$Res> {
-  __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
-      : super(_value, (v) => _then(v as _$_Loading));
-
-  @override
-  _$_Loading get _value => super._value as _$_Loading;
-}
-
-/// @nodoc
-
-class _$_Loading extends _Loading {
-  const _$_Loading() : super._();
-
-  @override
-  String toString() {
-    return 'SeriesState.loading()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_Loading);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TVSerie> series) loaded,
-    required TResult Function(Failure failure) failed,
-  }) {
-    return loading();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-  }) {
-    return loading?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return loading(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-  }) {
-    return loading?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (loading != null) {
-      return loading(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Loading extends SeriesState {
-  const factory _Loading() = _$_Loading;
-  const _Loading._() : super._();
-}
-
-/// @nodoc
-abstract class _$$_LoadedCopyWith<$Res> {
-  factory _$$_LoadedCopyWith(_$_Loaded value, $Res Function(_$_Loaded) then) =
-      __$$_LoadedCopyWithImpl<$Res>;
-  $Res call({List<TVSerie> series});
-}
-
-/// @nodoc
-class __$$_LoadedCopyWithImpl<$Res> extends _$SeriesStateCopyWithImpl<$Res>
-    implements _$$_LoadedCopyWith<$Res> {
-  __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
-      : super(_value, (v) => _then(v as _$_Loaded));
-
-  @override
-  _$_Loaded get _value => super._value as _$_Loaded;
 
   @override
   $Res call({
     Object? series = freezed,
+    Object? error = freezed,
+    Object? isLoading = freezed,
   }) {
-    return _then(_$_Loaded(
+    return _then(_value.copyWith(
+      series: series == freezed
+          ? _value.series
+          : series // ignore: cast_nullable_to_non_nullable
+              as List<TVSerie>,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Failure?,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
+    ));
+  }
+}
+
+/// @nodoc
+abstract class _$$_SeriesStateCopyWith<$Res>
+    implements $SeriesStateCopyWith<$Res> {
+  factory _$$_SeriesStateCopyWith(
+          _$_SeriesState value, $Res Function(_$_SeriesState) then) =
+      __$$_SeriesStateCopyWithImpl<$Res>;
+  @override
+  $Res call({List<TVSerie> series, Failure? error, bool? isLoading});
+}
+
+/// @nodoc
+class __$$_SeriesStateCopyWithImpl<$Res> extends _$SeriesStateCopyWithImpl<$Res>
+    implements _$$_SeriesStateCopyWith<$Res> {
+  __$$_SeriesStateCopyWithImpl(
+      _$_SeriesState _value, $Res Function(_$_SeriesState) _then)
+      : super(_value, (v) => _then(v as _$_SeriesState));
+
+  @override
+  _$_SeriesState get _value => super._value as _$_SeriesState;
+
+  @override
+  $Res call({
+    Object? series = freezed,
+    Object? error = freezed,
+    Object? isLoading = freezed,
+  }) {
+    return _then(_$_SeriesState(
       series: series == freezed
           ? _value._series
           : series // ignore: cast_nullable_to_non_nullable
               as List<TVSerie>,
+      error: error == freezed
+          ? _value.error
+          : error // ignore: cast_nullable_to_non_nullable
+              as Failure?,
+      isLoading: isLoading == freezed
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_Loaded extends _Loaded {
-  const _$_Loaded({required final List<TVSerie> series})
-      : _series = series,
-        super._();
+class _$_SeriesState implements _SeriesState {
+  const _$_SeriesState(
+      {required final List<TVSerie> series, this.error, this.isLoading})
+      : _series = series;
 
   final List<TVSerie> _series;
   @override
@@ -509,252 +274,52 @@ class _$_Loaded extends _Loaded {
   }
 
   @override
+  final Failure? error;
+  @override
+  final bool? isLoading;
+
+  @override
   String toString() {
-    return 'SeriesState.loaded(series: $series)';
+    return 'SeriesState._(series: $series, error: $error, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Loaded &&
-            const DeepCollectionEquality().equals(other._series, _series));
+            other is _$_SeriesState &&
+            const DeepCollectionEquality().equals(other._series, _series) &&
+            const DeepCollectionEquality().equals(other.error, error) &&
+            const DeepCollectionEquality().equals(other.isLoading, isLoading));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_series));
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_series),
+      const DeepCollectionEquality().hash(error),
+      const DeepCollectionEquality().hash(isLoading));
 
   @JsonKey(ignore: true)
   @override
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      __$$_LoadedCopyWithImpl<_$_Loaded>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TVSerie> series) loaded,
-    required TResult Function(Failure failure) failed,
-  }) {
-    return loaded(series);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-  }) {
-    return loaded?.call(series);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(series);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return loaded(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-  }) {
-    return loaded?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (loaded != null) {
-      return loaded(this);
-    }
-    return orElse();
-  }
+  _$$_SeriesStateCopyWith<_$_SeriesState> get copyWith =>
+      __$$_SeriesStateCopyWithImpl<_$_SeriesState>(this, _$identity);
 }
 
-abstract class _Loaded extends SeriesState {
-  const factory _Loaded({required final List<TVSerie> series}) = _$_Loaded;
-  const _Loaded._() : super._();
+abstract class _SeriesState implements SeriesState {
+  const factory _SeriesState(
+      {required final List<TVSerie> series,
+      final Failure? error,
+      final bool? isLoading}) = _$_SeriesState;
 
+  @override
   List<TVSerie> get series => throw _privateConstructorUsedError;
+  @override
+  Failure? get error => throw _privateConstructorUsedError;
+  @override
+  bool? get isLoading => throw _privateConstructorUsedError;
+  @override
   @JsonKey(ignore: true)
-  _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_FailedCopyWith<$Res> {
-  factory _$$_FailedCopyWith(_$_Failed value, $Res Function(_$_Failed) then) =
-      __$$_FailedCopyWithImpl<$Res>;
-  $Res call({Failure failure});
-}
-
-/// @nodoc
-class __$$_FailedCopyWithImpl<$Res> extends _$SeriesStateCopyWithImpl<$Res>
-    implements _$$_FailedCopyWith<$Res> {
-  __$$_FailedCopyWithImpl(_$_Failed _value, $Res Function(_$_Failed) _then)
-      : super(_value, (v) => _then(v as _$_Failed));
-
-  @override
-  _$_Failed get _value => super._value as _$_Failed;
-
-  @override
-  $Res call({
-    Object? failure = freezed,
-  }) {
-    return _then(_$_Failed(
-      failure: failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as Failure,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_Failed extends _Failed {
-  const _$_Failed({required this.failure}) : super._();
-
-  @override
-  final Failure failure;
-
-  @override
-  String toString() {
-    return 'SeriesState.failed(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_Failed &&
-            const DeepCollectionEquality().equals(other.failure, failure));
-  }
-
-  @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(failure));
-
-  @JsonKey(ignore: true)
-  @override
-  _$$_FailedCopyWith<_$_Failed> get copyWith =>
-      __$$_FailedCopyWithImpl<_$_Failed>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loading,
-    required TResult Function(List<TVSerie> series) loaded,
-    required TResult Function(Failure failure) failed,
-  }) {
-    return failed(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-  }) {
-    return failed?.call(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loading,
-    TResult Function(List<TVSerie> series)? loaded,
-    TResult Function(Failure failure)? failed,
-    required TResult orElse(),
-  }) {
-    if (failed != null) {
-      return failed(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Loading value) loading,
-    required TResult Function(_Loaded value) loaded,
-    required TResult Function(_Failed value) failed,
-  }) {
-    return failed(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-  }) {
-    return failed?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Loading value)? loading,
-    TResult Function(_Loaded value)? loaded,
-    TResult Function(_Failed value)? failed,
-    required TResult orElse(),
-  }) {
-    if (failed != null) {
-      return failed(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Failed extends SeriesState {
-  const factory _Failed({required final Failure failure}) = _$_Failed;
-  const _Failed._() : super._();
-
-  Failure get failure => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$$_FailedCopyWith<_$_Failed> get copyWith =>
+  _$$_SeriesStateCopyWith<_$_SeriesState> get copyWith =>
       throw _privateConstructorUsedError;
 }

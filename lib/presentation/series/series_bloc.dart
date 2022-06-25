@@ -11,24 +11,44 @@ part 'series_state.dart';
 class SeriesBloc extends Bloc<SeriesEvent, SeriesState> {
   SeriesBloc({
     required this.getSeries,
-  }) : super(const SeriesState.initial()) {
+  }) : super(SeriesState.initial()) {
     on<SeriesEvent>(_onEvent);
   }
 
   final GetSeries getSeries;
+  int currentPage = 1;
 
   Future<void> _onEvent(
     SeriesEvent event,
     Emitter<SeriesState> emit,
   ) async {
     await event.when(
-      load: () async {
-        emit(const SeriesState.loading());
+      loadNextPage: () async {
+        if (state.isLoading == true) return;
 
-        final seriesOrFailure = await getSeries();
-        seriesOrFailure.fold(
-          (failure) => emit(SeriesState.failed(failure: failure)),
-          (series) => emit(SeriesState.loaded(series: series)),
+        emit(state.copyWith(isLoading: true));
+
+        final seriesOrFailure = await getSeries(page: currentPage++);
+        await seriesOrFailure.fold(
+          (failure) {
+            currentPage--;
+            emit(
+              state.copyWith(
+                error: failure,
+                isLoading: false,
+              ),
+            );
+          },
+          (series) async {
+            emit(
+              state.copyWith(
+                series: [...state.series + series],
+                error: null,
+              ),
+            );
+            await Future<dynamic>.delayed(const Duration(seconds: 1));
+            emit(state.copyWith(isLoading: false));
+          },
         );
       },
     );
