@@ -16,11 +16,11 @@ void main() {
 
   final serie1 = TVSerie.empty(id: 1);
   final serieModel1 = TvSerieModel.fromEntity(serie1);
-  final serieMap1 = serieModel1.toMap();
+  final serieMap1 = serieModel1.toJson();
 
   final serie2 = TVSerie.empty(id: 2);
   final serieModel2 = TvSerieModel.fromEntity(serie2);
-  final serieMap2 = serieModel2.toMap();
+  final serieMap2 = serieModel2.toJson();
 
   setUp(() {
     storageMock = LocalStorageClientMock();

@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:localstorage/localstorage.dart';
 import 'package:maze_tv/data/errors/exceptions.dart';
 
