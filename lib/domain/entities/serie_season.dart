@@ -18,6 +18,34 @@ class SerieSeason extends Equatable {
     required this.links,
   });
 
+  factory SerieSeason.empty({
+    int? id,
+    String? url,
+    int? number,
+    String? name,
+    int? episodeOrder,
+    String? premiereDate,
+    String? endDate,
+    String? summary,
+    Network? network,
+    TVImage? image,
+    Links? links,
+  }) {
+    return SerieSeason(
+      id: id ?? 0,
+      url: url ?? '',
+      number: number ?? 0,
+      name: name ?? '',
+      episodeOrder: episodeOrder ?? 0,
+      premiereDate: premiereDate ?? '',
+      endDate: endDate ?? '',
+      summary: summary ?? '',
+      network: network ?? Network.empty(),
+      image: image ?? TVImage.empty(),
+      links: links ?? Links.empty(),
+    );
+  }
+
   final int id;
   final String url;
   final int number;

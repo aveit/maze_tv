@@ -1,6 +1,10 @@
 import 'package:maze_tv/data/models/image_model.dart';
 import 'package:maze_tv/data/models/rating_model.dart';
 import 'package:maze_tv/data/models/tv_serie_model.dart';
+import 'package:maze_tv/domain/entities/episode.dart';
+import 'package:maze_tv/domain/entities/image.dart';
+import 'package:maze_tv/domain/entities/links.dart';
+import 'package:maze_tv/domain/entities/rating.dart';
 
 class EpisodeModel {
   EpisodeModel({
@@ -36,6 +40,25 @@ class EpisodeModel {
       image: TVImageModel.fromJson(json['image'] as Map<String, dynamic>),
       summary: json['summary'] as String?,
       links: LinksModel.fromJson(json['_links'] as Map<String, dynamic>),
+    );
+  }
+
+  Episode toEntity() {
+    return Episode(
+      id: id ?? 0,
+      url: url ?? '',
+      name: name ?? '',
+      season: season ?? 0,
+      number: number ?? 0,
+      type: type ?? '',
+      airdate: airdate ?? '',
+      airtime: airtime ?? '',
+      airstamp: airstamp ?? '',
+      runtime: runtime ?? 0,
+      rating: rating?.toEntity() ?? Rating.empty(),
+      image: image?.toEntity() ?? TVImage.empty(),
+      summary: summary ?? '',
+      links: links?.toEntity() ?? Links.empty(),
     );
   }
 
