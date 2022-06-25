@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+
 import 'package:maze_tv/data/models/image_model.dart';
 import 'package:maze_tv/data/models/network_model.dart';
 import 'package:maze_tv/data/models/rating_model.dart';
@@ -121,10 +125,85 @@ class TvSerieModel {
       links: lLinks?.toEntity() ?? Links.empty(),
     );
   }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (id != null) {
+      result.addAll({'id': id});
+    }
+    if (url != null) {
+      result.addAll({'url': url});
+    }
+    if (name != null) {
+      result.addAll({'name': name});
+    }
+    if (type != null) {
+      result.addAll({'type': type});
+    }
+    if (language != null) {
+      result.addAll({'language': language});
+    }
+    if (genres != null) {
+      result.addAll({'genres': genres});
+    }
+    if (status != null) {
+      result.addAll({'status': status});
+    }
+    if (runtime != null) {
+      result.addAll({'runtime': runtime});
+    }
+    if (averageRuntime != null) {
+      result.addAll({'averageRuntime': averageRuntime});
+    }
+    if (premiered != null) {
+      result.addAll({'premiered': premiered});
+    }
+    if (ended != null) {
+      result.addAll({'ended': ended});
+    }
+    if (officialSite != null) {
+      result.addAll({'officialSite': officialSite});
+    }
+    if (schedule != null) {
+      result.addAll({'schedule': schedule!.toMap()});
+    }
+    if (rating != null) {
+      result.addAll({'rating': rating!.toMap()});
+    }
+    if (weight != null) {
+      result.addAll({'weight': weight});
+    }
+    if (network != null) {
+      result.addAll({'network': network!.toMap()});
+    }
+    if (externals != null) {
+      result.addAll({'externals': externals!.toMap()});
+    }
+    if (image != null) {
+      result.addAll({'image': image!.toMap()});
+    }
+    if (summary != null) {
+      result.addAll({'summary': summary});
+    }
+    if (updated != null) {
+      result.addAll({'updated': updated});
+    }
+    if (lLinks != null) {
+      result.addAll({'lLinks': lLinks!.toMap()});
+    }
+
+    return result;
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class ScheduleModel {
-  const ScheduleModel({this.time, this.days = const []});
+  const ScheduleModel({
+    this.time,
+    required this.days,
+  });
   factory ScheduleModel.fromJson(Map<String, dynamic> json) {
     return ScheduleModel(
       time: json['time'] as String?,
@@ -141,10 +220,27 @@ class ScheduleModel {
       time: time ?? '',
     );
   }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (time != null) {
+      result.addAll({'time': time});
+    }
+    result.addAll({'days': days});
+
+    return result;
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class ExternalsModel {
-  const ExternalsModel({this.tvrage, this.thetvdb, this.imdb});
+  const ExternalsModel({
+    this.tvrage,
+    this.thetvdb,
+    this.imdb,
+  });
   factory ExternalsModel.fromJson(Map<String, dynamic> json) {
     return ExternalsModel(
       tvrage: json['tvrage'] as int?,
@@ -164,10 +260,31 @@ class ExternalsModel {
       imdb: imdb ?? '',
     );
   }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (tvrage != null) {
+      result.addAll({'tvrage': tvrage});
+    }
+    if (thetvdb != null) {
+      result.addAll({'thetvdb': thetvdb});
+    }
+    if (imdb != null) {
+      result.addAll({'imdb': imdb});
+    }
+
+    return result;
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class LinksModel {
-  const LinksModel({this.self, this.previousepisode});
+  const LinksModel({
+    this.self,
+    this.previousepisode,
+  });
   factory LinksModel.fromJson(Map<String, dynamic> json) {
     return LinksModel(
       self: json['self'] != null
@@ -188,10 +305,27 @@ class LinksModel {
 
   final SelfModel? self;
   final SelfModel? previousepisode;
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (self != null) {
+      result.addAll({'self': self!.toMap()});
+    }
+    if (previousepisode != null) {
+      result.addAll({'previousepisode': previousepisode!.toMap()});
+    }
+
+    return result;
+  }
+
+  String toJson() => json.encode(toMap());
 }
 
 class SelfModel {
-  const SelfModel({this.href});
+  const SelfModel({
+    this.href,
+  });
   factory SelfModel.fromJson(Map<String, dynamic> json) {
     return SelfModel(href: json['href'] as String?);
   }
@@ -201,4 +335,16 @@ class SelfModel {
   Self toEntity() {
     return Self(href: href ?? '');
   }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (href != null) {
+      result.addAll({'href': href});
+    }
+
+    return result;
+  }
+
+  String toJson() => json.encode(toMap());
 }

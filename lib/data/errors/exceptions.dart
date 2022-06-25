@@ -20,3 +20,11 @@ class UnexpectedException extends AppException {
     return const UnexpectedFailure();
   }
 }
+
+class LocalException extends AppException {
+  const LocalException();
+  @override
+  Failure toFailure() {
+    return const LocalFailure();
+  }
+}

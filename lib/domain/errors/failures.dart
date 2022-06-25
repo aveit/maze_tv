@@ -13,3 +13,7 @@ class ServerFailure extends Failure {
 class InvalidParamFailure extends Failure {
   const InvalidParamFailure();
 }
+
+class LocalFailure extends Failure {
+  const LocalFailure();
+}

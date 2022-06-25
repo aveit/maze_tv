@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:maze_tv/data/models/country_model.dart';
 import 'package:maze_tv/domain/entities/country.dart';
 import 'package:maze_tv/domain/entities/network.dart';
@@ -34,4 +36,39 @@ class NetworkModel {
       officialSite: officialSite ?? '',
     );
   }
+
+  NetworkModel copyWith({
+    int? id,
+    String? name,
+    CountryModel? country,
+    String? officialSite,
+  }) {
+    return NetworkModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      country: country ?? this.country,
+      officialSite: officialSite ?? this.officialSite,
+    );
+  }
+
+  Map<String, dynamic> toMap() {
+    final result = <String, dynamic>{};
+
+    if (id != null) {
+      result.addAll({'id': id});
+    }
+    if (name != null) {
+      result.addAll({'name': name});
+    }
+    if (country != null) {
+      result.addAll({'country': country!.toMap()});
+    }
+    if (officialSite != null) {
+      result.addAll({'officialSite': officialSite});
+    }
+
+    return result;
+  }
+
+  String toJson() => json.encode(toMap());
 }
