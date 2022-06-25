@@ -12,6 +12,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart';
 import 'package:localstorage/localstorage.dart';
 import 'package:maze_tv/constants.dart';
+import 'package:maze_tv/data/usecases/local/get_favorites.dart';
+import 'package:maze_tv/data/usecases/local/remove_favorite.dart';
 import 'package:maze_tv/data/usecases/local/save_serie_on_favorites.dart';
 import 'package:maze_tv/data/usecases/remote/get_season_episodes.dart';
 import 'package:maze_tv/data/usecases/remote/get_serie_seasons.dart';
@@ -23,7 +25,9 @@ import 'package:maze_tv/infra/http_api_client_adapter.dart';
 import 'package:maze_tv/infra/local_storage_client_adapter.dart';
 import 'package:maze_tv/l10n/l10n.dart';
 import 'package:maze_tv/main/composites/get_seasons_with_episodes.dart';
-import 'package:maze_tv/presentation/favorites/bloc/favorites_bloc.dart';
+import 'package:maze_tv/presentation/favorites/add/favorites_bloc.dart';
+import 'package:maze_tv/presentation/favorites/get/get_favorites_bloc.dart';
+import 'package:maze_tv/presentation/favorites/remove/bloc/remove_favorite_bloc.dart';
 import 'package:maze_tv/presentation/search/search_bloc.dart';
 import 'package:maze_tv/presentation/serie_seasons/serie_seasons_bloc.dart';
 import 'package:maze_tv/presentation/series/series_bloc.dart';
@@ -40,6 +44,7 @@ class App extends StatelessWidget {
       basePath: 'api.tvmaze.com',
       httpClient: Client(),
     );
+    final localStorage = LocalStorageAdapter(LocalStorage('db'));
     return MultiBlocProvider(
       providers: [
         //todo(acacio) -> inject
@@ -63,11 +68,17 @@ class App extends StatelessWidget {
         ),
         BlocProvider(
           create: (_) => FavoritesBloc(
-            saveSerieOnFavorites: SaveSerieOnFavoritesLocal(
-              LocalStorageAdapter(
-                LocalStorage('db'),
-              ),
-            ),
+            saveSerieOnFavorites: SaveSerieOnFavoritesLocal(localStorage),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => GetFavoritesBloc(
+            getFavorites: GetFavoritesLocal(localStorage),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => RemoveFavoriteBloc(
+            removeFavorite: RemoveFavoriteLocal(localStorage),
           ),
         ),
       ],

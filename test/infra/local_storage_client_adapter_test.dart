@@ -17,9 +17,7 @@ void main() {
   });
 
   const myKey = 'favorites';
-  const expectedMap = [
-    {myKey: 'any_value'}
-  ];
+  const expectedMap = '[{$myKey: any_value}]';
   const serieToSave = TvSerieModel(id: 1);
 
   When<dynamic> mockDeleteCall() => when(() => storage.deleteItem(any()));
@@ -88,10 +86,10 @@ void main() {
         });
 
         test('''
-          Should return a List<Map<String, dynamic>> when has data
+          Should return a string with a json list
           ''', () async {
           //? arrange
-          mockGet("[{\"$myKey\":\"any_value\"}]");
+          mockGet('[{$myKey: any_value}]');
 
           //* act
           final result = await sut.get(key: myKey);

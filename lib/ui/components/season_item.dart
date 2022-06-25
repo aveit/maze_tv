@@ -54,7 +54,15 @@ class SeasonItem extends StatelessWidget {
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: season.episodes.isEmpty
-                              ? const [Text('no episodes found')]
+                              ? const [
+                                  Padding(
+                                    padding: EdgeInsets.all(kSmallPadding),
+                                    child: InformativeText(
+                                      text: 'No episodes found',
+                                      fontSize: 20,
+                                    ),
+                                  ),
+                                ]
                               : season.episodes.map(
                                   (episode) {
                                     return EpisodeWidget(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:maze_tv/presentation/favorites/get/get_favorites_bloc.dart';
+import 'package:maze_tv/ui/pages/favorites_page.dart';
 import 'package:maze_tv/ui/pages/search/search_page.dart';
 import 'package:maze_tv/ui/pages/series_page.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -13,6 +16,7 @@ class _HomePageState extends State<HomePage>
     with SingleTickerProviderStateMixin {
   static const pages = [
     SeriesPage(),
+    FavoritesPage(),
     SearchPage(),
   ];
 
@@ -38,6 +42,13 @@ class _HomePageState extends State<HomePage>
           isScrollable: true,
           controller: controller,
           indicatorColor: Theme.of(context).primaryColorLight,
+          onTap: (index) {
+            if (index == 1) {
+              context.read<GetFavoritesBloc>().add(
+                    const GetFavoritesEvent.get(),
+                  );
+            }
+          },
           tabs: [
             Tab(
               height: 60,
@@ -45,6 +56,15 @@ class _HomePageState extends State<HomePage>
                 children: const [
                   Icon(Icons.movie_rounded, size: 40),
                   Text('Movies'),
+                ],
+              ),
+            ),
+            Tab(
+              height: 60,
+              child: Column(
+                children: const [
+                  Icon(Icons.favorite_rounded, size: 40),
+                  Text('Favs'),
                 ],
               ),
             ),

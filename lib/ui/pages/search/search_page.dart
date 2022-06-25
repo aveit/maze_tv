@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:maze_tv/constants.dart';
 import 'package:maze_tv/presentation/search/search_bloc.dart';
 import 'package:maze_tv/ui/components/app_loader.dart';
@@ -63,11 +64,18 @@ class _SearchPageState extends State<SearchPage> {
                     return const NothingFound();
                   }
                   return Expanded(
-                    child: GridView.count(
-                      crossAxisCount: 1,
-                      children: series.map((current) {
-                        return SeriePoster(serie: current);
-                      }).toList(),
+                    child: MasonryGridView.count(
+                      crossAxisCount: 2,
+                      mainAxisSpacing: kSmallPadding,
+                      crossAxisSpacing: kBigSpace,
+                      itemBuilder: (context, index) {
+                        final currentSerie = series.elementAt(index);
+                        return SeriePoster(
+                          serie: currentSerie,
+                          shouldCheckRating: true,
+                        );
+                      },
+                      itemCount: series.length,
                     ),
                   );
                 },

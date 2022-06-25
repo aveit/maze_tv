@@ -151,7 +151,7 @@ class TvSerieModel extends Equatable {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     final result = <String, dynamic>{};
 
     if (id != null) {
@@ -220,8 +220,6 @@ class TvSerieModel extends Equatable {
 
     return result;
   }
-
-  String toJson() => json.encode(toMap());
 
   @override
   List<Object?> get props => [id];

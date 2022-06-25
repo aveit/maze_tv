@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target
 
-part of 'favorites_bloc.dart';
+part of 'remove_favorite_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,62 +15,62 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$FavoritesEvent {
+mixin _$RemoveFavoriteEvent {
   TVSerie get serie => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TVSerie serie) add,
+    required TResult Function(TVSerie serie) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TVSerie serie)? add,
+    TResult Function(TVSerie serie)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TVSerie serie)? add,
+    TResult Function(TVSerie serie)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
+    required TResult Function(_Remove value) remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $FavoritesEventCopyWith<FavoritesEvent> get copyWith =>
+  $RemoveFavoriteEventCopyWith<RemoveFavoriteEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavoritesEventCopyWith<$Res> {
-  factory $FavoritesEventCopyWith(
-          FavoritesEvent value, $Res Function(FavoritesEvent) then) =
-      _$FavoritesEventCopyWithImpl<$Res>;
+abstract class $RemoveFavoriteEventCopyWith<$Res> {
+  factory $RemoveFavoriteEventCopyWith(
+          RemoveFavoriteEvent value, $Res Function(RemoveFavoriteEvent) then) =
+      _$RemoveFavoriteEventCopyWithImpl<$Res>;
   $Res call({TVSerie serie});
 }
 
 /// @nodoc
-class _$FavoritesEventCopyWithImpl<$Res>
-    implements $FavoritesEventCopyWith<$Res> {
-  _$FavoritesEventCopyWithImpl(this._value, this._then);
+class _$RemoveFavoriteEventCopyWithImpl<$Res>
+    implements $RemoveFavoriteEventCopyWith<$Res> {
+  _$RemoveFavoriteEventCopyWithImpl(this._value, this._then);
 
-  final FavoritesEvent _value;
+  final RemoveFavoriteEvent _value;
   // ignore: unused_field
-  final $Res Function(FavoritesEvent) _then;
+  final $Res Function(RemoveFavoriteEvent) _then;
 
   @override
   $Res call({
@@ -86,27 +86,29 @@ class _$FavoritesEventCopyWithImpl<$Res>
 }
 
 /// @nodoc
-abstract class _$$_AddCopyWith<$Res> implements $FavoritesEventCopyWith<$Res> {
-  factory _$$_AddCopyWith(_$_Add value, $Res Function(_$_Add) then) =
-      __$$_AddCopyWithImpl<$Res>;
+abstract class _$$_RemoveCopyWith<$Res>
+    implements $RemoveFavoriteEventCopyWith<$Res> {
+  factory _$$_RemoveCopyWith(_$_Remove value, $Res Function(_$_Remove) then) =
+      __$$_RemoveCopyWithImpl<$Res>;
   @override
   $Res call({TVSerie serie});
 }
 
 /// @nodoc
-class __$$_AddCopyWithImpl<$Res> extends _$FavoritesEventCopyWithImpl<$Res>
-    implements _$$_AddCopyWith<$Res> {
-  __$$_AddCopyWithImpl(_$_Add _value, $Res Function(_$_Add) _then)
-      : super(_value, (v) => _then(v as _$_Add));
+class __$$_RemoveCopyWithImpl<$Res>
+    extends _$RemoveFavoriteEventCopyWithImpl<$Res>
+    implements _$$_RemoveCopyWith<$Res> {
+  __$$_RemoveCopyWithImpl(_$_Remove _value, $Res Function(_$_Remove) _then)
+      : super(_value, (v) => _then(v as _$_Remove));
 
   @override
-  _$_Add get _value => super._value as _$_Add;
+  _$_Remove get _value => super._value as _$_Remove;
 
   @override
   $Res call({
     Object? serie = freezed,
   }) {
-    return _then(_$_Add(
+    return _then(_$_Remove(
       serie == freezed
           ? _value.serie
           : serie // ignore: cast_nullable_to_non_nullable
@@ -117,22 +119,22 @@ class __$$_AddCopyWithImpl<$Res> extends _$FavoritesEventCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_Add extends _Add {
-  const _$_Add(this.serie) : super._();
+class _$_Remove extends _Remove {
+  const _$_Remove(this.serie) : super._();
 
   @override
   final TVSerie serie;
 
   @override
   String toString() {
-    return 'FavoritesEvent.add(serie: $serie)';
+    return 'RemoveFavoriteEvent.remove(serie: $serie)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Add &&
+            other is _$_Remove &&
             const DeepCollectionEquality().equals(other.serie, serie));
   }
 
@@ -142,33 +144,33 @@ class _$_Add extends _Add {
 
   @JsonKey(ignore: true)
   @override
-  _$$_AddCopyWith<_$_Add> get copyWith =>
-      __$$_AddCopyWithImpl<_$_Add>(this, _$identity);
+  _$$_RemoveCopyWith<_$_Remove> get copyWith =>
+      __$$_RemoveCopyWithImpl<_$_Remove>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(TVSerie serie) add,
+    required TResult Function(TVSerie serie) remove,
   }) {
-    return add(serie);
+    return remove(serie);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult Function(TVSerie serie)? add,
+    TResult Function(TVSerie serie)? remove,
   }) {
-    return add?.call(serie);
+    return remove?.call(serie);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(TVSerie serie)? add,
+    TResult Function(TVSerie serie)? remove,
     required TResult orElse(),
   }) {
-    if (add != null) {
-      return add(serie);
+    if (remove != null) {
+      return remove(serie);
     }
     return orElse();
   }
@@ -176,94 +178,101 @@ class _$_Add extends _Add {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Add value) add,
+    required TResult Function(_Remove value) remove,
   }) {
-    return add(this);
+    return remove(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
   }) {
-    return add?.call(this);
+    return remove?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Add value)? add,
+    TResult Function(_Remove value)? remove,
     required TResult orElse(),
   }) {
-    if (add != null) {
-      return add(this);
+    if (remove != null) {
+      return remove(this);
     }
     return orElse();
   }
 }
 
-abstract class _Add extends FavoritesEvent {
-  const factory _Add(final TVSerie serie) = _$_Add;
-  const _Add._() : super._();
+abstract class _Remove extends RemoveFavoriteEvent {
+  const factory _Remove(final TVSerie serie) = _$_Remove;
+  const _Remove._() : super._();
 
   @override
   TVSerie get serie => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$$_AddCopyWith<_$_Add> get copyWith => throw _privateConstructorUsedError;
+  _$$_RemoveCopyWith<_$_Remove> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-mixin _$FavoritesState {
+mixin _$RemoveFavoriteState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? done,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Done value) done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Done value)? done,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Done value)? done,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavoritesStateCopyWith<$Res> {
-  factory $FavoritesStateCopyWith(
-          FavoritesState value, $Res Function(FavoritesState) then) =
-      _$FavoritesStateCopyWithImpl<$Res>;
+abstract class $RemoveFavoriteStateCopyWith<$Res> {
+  factory $RemoveFavoriteStateCopyWith(
+          RemoveFavoriteState value, $Res Function(RemoveFavoriteState) then) =
+      _$RemoveFavoriteStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$FavoritesStateCopyWithImpl<$Res>
-    implements $FavoritesStateCopyWith<$Res> {
-  _$FavoritesStateCopyWithImpl(this._value, this._then);
+class _$RemoveFavoriteStateCopyWithImpl<$Res>
+    implements $RemoveFavoriteStateCopyWith<$Res> {
+  _$RemoveFavoriteStateCopyWithImpl(this._value, this._then);
 
-  final FavoritesState _value;
+  final RemoveFavoriteState _value;
   // ignore: unused_field
-  final $Res Function(FavoritesState) _then;
+  final $Res Function(RemoveFavoriteState) _then;
 }
 
 /// @nodoc
@@ -274,7 +283,8 @@ abstract class _$$_InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$_InitialCopyWithImpl<$Res> extends _$FavoritesStateCopyWithImpl<$Res>
+class __$$_InitialCopyWithImpl<$Res>
+    extends _$RemoveFavoriteStateCopyWithImpl<$Res>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, (v) => _then(v as _$_Initial));
@@ -290,7 +300,7 @@ class _$_Initial extends _Initial {
 
   @override
   String toString() {
-    return 'FavoritesState.initial()';
+    return 'RemoveFavoriteState.initial()';
   }
 
   @override
@@ -306,6 +316,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() done,
   }) {
     return initial();
   }
@@ -314,6 +325,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? done,
   }) {
     return initial?.call();
   }
@@ -322,6 +334,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? done,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -334,6 +347,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Done value) done,
   }) {
     return initial(this);
   }
@@ -342,6 +356,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Done value)? done,
   }) {
     return initial?.call(this);
   }
@@ -350,6 +365,7 @@ class _$_Initial extends _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Done value)? done,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -359,7 +375,111 @@ class _$_Initial extends _Initial {
   }
 }
 
-abstract class _Initial extends FavoritesState {
+abstract class _Initial extends RemoveFavoriteState {
   const factory _Initial() = _$_Initial;
   const _Initial._() : super._();
+}
+
+/// @nodoc
+abstract class _$$_DoneCopyWith<$Res> {
+  factory _$$_DoneCopyWith(_$_Done value, $Res Function(_$_Done) then) =
+      __$$_DoneCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_DoneCopyWithImpl<$Res>
+    extends _$RemoveFavoriteStateCopyWithImpl<$Res>
+    implements _$$_DoneCopyWith<$Res> {
+  __$$_DoneCopyWithImpl(_$_Done _value, $Res Function(_$_Done) _then)
+      : super(_value, (v) => _then(v as _$_Done));
+
+  @override
+  _$_Done get _value => super._value as _$_Done;
+}
+
+/// @nodoc
+
+class _$_Done extends _Done {
+  const _$_Done() : super._();
+
+  @override
+  String toString() {
+    return 'RemoveFavoriteState.done()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Done);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() done,
+  }) {
+    return done();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? done,
+  }) {
+    return done?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? done,
+    required TResult orElse(),
+  }) {
+    if (done != null) {
+      return done();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Done value) done,
+  }) {
+    return done(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Done value)? done,
+  }) {
+    return done?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Done value)? done,
+    required TResult orElse(),
+  }) {
+    if (done != null) {
+      return done(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Done extends RemoveFavoriteState {
+  const factory _Done() = _$_Done;
+  const _Done._() : super._();
 }

@@ -18,8 +18,21 @@ class SaveSerieOnFavoritesLocal implements SaveSerieOnFavorites {
     try {
       final model = TvSerieModel.fromEntity(serie);
 
-      final currentfavorites = await _storage.get(key: key);
-      currentfavorites.add(model.toMap());
+      final currentfavorites =
+          await _storage.get(key: key) ?? <Map<String, dynamic>>[];
+
+      if (currentfavorites is List) {
+        final jsonModel = model.toJson();
+        final index =
+            currentfavorites.indexWhere((element) => element['id'] == serie.id);
+        final contains = index != -1;
+
+        if (contains) {
+          currentfavorites.removeAt(index);
+        } else {
+          currentfavorites.add(jsonModel);
+        }
+      }
 
       await _storage.set(key: key, value: currentfavorites);
       return right(unit);

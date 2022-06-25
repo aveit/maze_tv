@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:localstorage/localstorage.dart';
 import 'package:maze_tv/data/errors/exceptions.dart';
 
@@ -10,11 +9,9 @@ class LocalStorageAdapter implements LocalStorageClient {
   final LocalStorage _storage;
 
   @override
-  Future<List<dynamic>> get({required String key}) async {
+  Future<dynamic> get({required String key}) async {
     try {
-      final dataStored = await _storage.getItem(key);
-      if (dataStored == null) return [];
-      return dataStored as List<dynamic>;
+      return await _storage.getItem(key);
     } catch (_) {
       throw const LocalException();
     }

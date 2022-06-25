@@ -22,11 +22,11 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   ) async {
     await event.when(
       add: (serie) async {
+        emit(const FavoritesState.initial());
         final savedOrFailure = await saveSerieOnFavorites(serie);
-        print(savedOrFailure);
         savedOrFailure.fold(
-          (l) => null,
-          (r) => null,
+          (_) => emit(const FavoritesState.error()),
+          (_) => emit(const FavoritesState.ok()),
         );
       },
     );
